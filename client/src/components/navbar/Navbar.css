@@ -1,0 +1,27 @@
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color:#E9E9E9;
+  padding: 0.5em;
+  height: 3em;
+  margin-bottom: 0.3em;
+}
+
+.Navbar img {
+  margin-left: 1em;
+}
+
+.Navbar-links-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.Navbar-links-list-item {
+  margin: 0 1em;
+  font-weight: 500;
+}
+
+.Navbar-links-list-item:hover {
+  color: gray;
+}
