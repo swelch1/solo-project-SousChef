@@ -12,13 +12,14 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
       if (!allHealthLabels.includes(label)) {allHealthLabels.push(label)}
     })
     recipe.cuisineType.forEach(cuisine => {
-      if (!allCuisines.includes(cuisine)) {allHealthLabels.push(cuisine)}
+      if (!allCuisines.includes(cuisine)) {allCuisines.push(cuisine)}
     })
   })
   return {
     allRecipes: recipes,
     allCuisines,
-    healthLabels: allHealthLabels
+    healthLabels: allHealthLabels,
+    searchResults: [],
   };
 }
 

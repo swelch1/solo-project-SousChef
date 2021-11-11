@@ -2,6 +2,11 @@ import React from 'react'
 import './RecipeSmall.css';
 
 const RecipeSmall = ({ recipe }: any) => {
+  function convertTime (mins: number): string {
+    const minutes = (mins % 60);
+    const hours = mins/60 > 1 ? Math.floor(mins/60) : undefined;
+    return hours ? `${hours} hr ${minutes} mins` : `${minutes} mins`
+  }
 
   return (
     <div className="RecipeSmall">
@@ -13,7 +18,7 @@ const RecipeSmall = ({ recipe }: any) => {
             <div className="Recipe-info-container">
               <div id="Recipe-title">{recipe.label}</div>
               <div id="Recipe-info">
-                <div>Cook time: {recipe.totalTime}</div>
+                <div>Cook time: {convertTime(recipe.totalTime)}</div>
                 <div>Serves: {recipe.yield}</div>
               </div>
             </div>

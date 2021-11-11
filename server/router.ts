@@ -7,13 +7,13 @@ router
   .get('/', ctrl.getAllRecipes)
   
   // nav bar
-  .get('/all-recipes')
-  .get('/cuisines')
+  .get('/all-recipes') // not sure this is needed, data on client and simple reroute & render
+  .get('/cuisines')  // not sure this is needed, data on client and simple reroute & render
   .post('/login')
   .post('/register')
 
   // search & choose one
-  .get('/search/:searchTerm')
+  .get('/search/:searchTerm', ctrl.searchRecipes)
   .post('/find-one')
 
   // individual recipe

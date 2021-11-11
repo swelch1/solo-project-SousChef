@@ -1,19 +1,24 @@
 import React from 'react'
 import { useState, ChangeEvent, FormEvent } from 'react';
 import './SearchBar.css';
+import { searchRecipes } from '../../APIService';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { updateSearchRecipes } from '../../app/actions';
 
 const SearchBar = () => {
   const [ searchTerm, setSearchTerm ] = useState<string>('');
+  const state = useAppSelector(state => state);
+  const dispatch = useAppDispatch();
 
   function updateSearch (e: ChangeEvent<HTMLInputElement>): void {
     setSearchTerm(e.target.value)
   }
 
-  function handleSubmit (e: FormEvent<HTMLFormElement>): void {
+  async function handleSubmit (e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
-    console.log('searching');
+    const searchResults = await searchRecipes(searchTerm);
+    dispatch(updateSearchRecipes({...state, searchResults}));
     setSearchTerm('');
-    //call appropriate API service function
   }
 
   return (

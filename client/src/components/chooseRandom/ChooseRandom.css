@@ -10,3 +10,23 @@
 #ChooseRandom-header {
   font-size: 1.5em;
 }
+
+.ChooseRandom-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ChooseRandom-form label {
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+}
+
+.ChooseRandom button {
+  margin-top: 8em;
+  border-radius: 0.6em;
+  background-color: grey;
+}
+
+.ChooseRandom button:hover {
+  background-color: rgb(173, 121, 121);
+}
