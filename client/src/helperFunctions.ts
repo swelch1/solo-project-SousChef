@@ -26,7 +26,7 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
 export function featurize (allRecipes: IRecipe[]): IRecipe[] {
   const len = allRecipes.length;
   if (len === 0) {return []}
-  return [allRecipes[getRandomNum(len)], allRecipes[getRandomNum(len)], allRecipes[getRandomNum(len)], allRecipes[getRandomNum(len)]];
+  return [allRecipes[getRandomNum(len)], allRecipes[getRandomNum(len)], allRecipes[getRandomNum(len)]];
 }
 
 function getRandomNum(len: number): number {

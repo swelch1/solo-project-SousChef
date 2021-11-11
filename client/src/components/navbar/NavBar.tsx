@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="Navbar-links">
         <ul className="Navbar-links-list">
           <Link to="/allRecipes" className="Navbar-links-list-item">All Recipes</Link>
-          <Link to="/cuisines" className="Navbar-links-list-item">Recipes by Cuisine</Link>
+          {/* <Link to="/cuisines" className="Navbar-links-list-item">Recipes by Cuisine</Link> */}
           <Link to="/login" className="Navbar-links-list-item">Login/Register</Link>
         </ul>
       </div>
