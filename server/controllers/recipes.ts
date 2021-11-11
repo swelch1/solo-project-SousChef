@@ -1,13 +1,12 @@
 'use strict';
 
 const Model = require('../models/recipe');
-import { IRecipe } from '../interface/recipeInterface';
+import { IRecipe } from '../../interface/recipeInterface';
 
 export async function getAllRecipes (req: any, res: any): Promise<void> {
   try {
-    const all: IRecipe[] = await Model.getAll();
-    const randomNum: number  = getRandomNum()
-    const slice: IRecipe[] = all.slice(randomNum, randomNum + 4);
+    const allRec: IRecipe[] = await Model.getAll();
+    const slice: IRecipe[] = [allRec[getRandomNum()], allRec[getRandomNum()], allRec[getRandomNum()], allRec[getRandomNum()]];
     res.status(200);
     res.send(slice);
   } catch (e: any) {
