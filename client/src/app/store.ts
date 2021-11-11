@@ -2,9 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { allRecipeReducer } from './reducers';
 
 export const store = configureStore({
-  reducer: {
-    // allRecipes: allRecipeReducer
-  },
+  reducer: allRecipeReducer
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -6,9 +6,8 @@ import { IRecipe } from '../../interface/recipeInterface';
 export async function getAllRecipes (req: any, res: any): Promise<void> {
   try {
     const allRec: IRecipe[] = await Model.getAll();
-    const slice: IRecipe[] = [allRec[getRandomNum()], allRec[getRandomNum()], allRec[getRandomNum()], allRec[getRandomNum()]];
     res.status(200);
-    res.send(slice);
+    res.send(allRec);
   } catch (e: any) {
     console.log('Error getting all recipes', e);
     res.status(500);

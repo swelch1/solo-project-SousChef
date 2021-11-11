@@ -21,6 +21,8 @@ const ChooseRandom = () => {
 
   return (
     <div className="ChooseRandom">
+      <div id="ChooseRandom-header">Help me choose</div>
+      <hr />
       <form onSubmit={handleSubmit}>
         <label>Cuisine</label>
         <select id="cuisine" onChange={(e) => updateCriteria(e, "cuisine")}>

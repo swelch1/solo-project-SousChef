@@ -1,19 +1,22 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useAppDispatch } from './app/hooks';
+import { updateAllRecipes } from './app/actions';
 import './App.css';
-import { IRecipe } from '../../interface/recipeInterface';
+import { setStateInterfaceFromRecipes } from './helperFunctions';
 
 import { getFeaturedRecipes } from './APIService';
 import Navbar from './components/navbar/NavBar';
 import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
-  const [ recipes, setRecipes ] = useState<IRecipe[]>([]);
+  const dispatch = useAppDispatch();
 
   useEffect(()=> {
     async function getFeatured(): Promise<void> {
       const featured = await getFeaturedRecipes();
-      setRecipes(featured);
+      const newState = setStateInterfaceFromRecipes(featured)
+      dispatch(updateAllRecipes(newState));
     }
     getFeatured();
   }, [])
@@ -22,11 +25,6 @@ function App() {
     <div>
       <Navbar />
       <Dashboard />
-      {
-        recipes.length
-        ? recipes.map((r) => <div>{r.label}</div>)
-        :<div>No recipes yet</div>
-      }
     </div>
   );
 }
