@@ -5,6 +5,7 @@ import { IRecipe } from '../../interface/recipeInterface';
 
 export async function getAllRecipes (req: any, res: any): Promise<void> {
   try {
+    console.log('New request for all recipes');
     const allRec: IRecipe[] = await Model.getAll();
     res.status(200);
     res.send(allRec);
@@ -15,9 +16,3 @@ export async function getAllRecipes (req: any, res: any): Promise<void> {
 }
 
 
-
-
-
-function getRandomNum(): number {
-  return Math.round(Math.random() * 1900);
-}

@@ -11,7 +11,7 @@ import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   const dispatch = useAppDispatch();
-
+  
   useEffect(()=> {
     async function getFeatured(): Promise<void> {
       const featured = await getFeaturedRecipes();

@@ -1,0 +1,40 @@
+.RecipeSmall {
+  background-color: white;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 0.6em;
+  width: 10em;
+  height: 14em;
+  display: flex;
+}
+
+.Recipe-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Recipe-container:nth-child(1){
+  align-self: top;
+}
+
+.RecipeSmall img {
+  height: 7em;
+}
+
+.Recipe-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#Recipe-title {
+  font-size: 0.9em;
+  text-align: center;
+  vertical-align:middle;
+}
+
+#Recipe-info {
+  font-size: 0.8em;
+  text-align: center;
+}

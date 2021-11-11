@@ -1,5 +1,5 @@
 import React from 'react'
-import { IRecipe } from '../../../../interface/recipeInterface'
+import './RecipeSmall.css';
 
 const RecipeSmall = ({ recipe }: any) => {
 
@@ -8,12 +8,14 @@ const RecipeSmall = ({ recipe }: any) => {
       {
         recipe
         ? (
-          <div>
+          <div className="Recipe-container">
             <img src={recipe.image} alt={recipe.label}></img>
-            <div id="Recipe-title">{recipe.label}</div>
-            <div id="Recipe-info">
-              <div>Cook time: {recipe.totalTime}</div>
-              <div>Serves: {recipe.yield}</div>
+            <div className="Recipe-info-container">
+              <div id="Recipe-title">{recipe.label}</div>
+              <div id="Recipe-info">
+                <div>Cook time: {recipe.totalTime}</div>
+                <div>Serves: {recipe.yield}</div>
+              </div>
             </div>
           </div>
         )
