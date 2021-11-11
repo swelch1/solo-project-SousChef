@@ -4,10 +4,12 @@ import { useAppDispatch } from './app/hooks';
 import { updateAllRecipes } from './app/actions';
 import './App.css';
 import { setStateInterfaceFromRecipes } from './helperFunctions';
+import { Routes, Route, Outlet } from 'react-router-dom';
 
 import { getFeaturedRecipes } from './APIService';
 import Navbar from './components/navbar/NavBar';
 import Dashboard from './components/dashboard/Dashboard';
+import AllRecipes from './components/allRecipes/AllRecipes';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -24,7 +26,11 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Dashboard />
+      <Routes>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="allRecipes" element={<AllRecipes />} />
+      </Routes>
+      <Outlet />
     </div>
   );
 }
