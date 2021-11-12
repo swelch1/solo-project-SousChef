@@ -4,11 +4,13 @@ import './SearchBar.css';
 import { searchRecipes } from '../../APIService';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updateSearchRecipes } from '../../app/actions';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
   const [ searchTerm, setSearchTerm ] = useState<string>('');
   const state = useAppSelector(state => state);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   function updateSearch (e: ChangeEvent<HTMLInputElement>): void {
     setSearchTerm(e.target.value)
@@ -19,6 +21,7 @@ const SearchBar = () => {
     const searchResults = await searchRecipes(searchTerm);
     dispatch(updateSearchRecipes({...state, searchResults}));
     setSearchTerm('');
+    navigate(`/search/${searchTerm}`)
   }
 
   return (

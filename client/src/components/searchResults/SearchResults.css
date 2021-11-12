@@ -1,0 +1,38 @@
+
+.SearchResults-container {
+  padding: 0 1em 1em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 94%;
+  margin: auto;
+  background-color: #E9E9E9;
+  border-radius: 0.6em;
+  min-height: 3em;
+}
+
+.SearchResults .header {
+  font-size: 1.7em;
+  text-align: center;
+  font-weight: 500;
+  margin: auto;
+  margin-bottom: 0.5em;
+}
+
+.no-results .header{
+  font-size: 1em;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.no-results button {
+  margin: 0 0.5em;
+  padding: 0.4em;
+  border-radius: 0.4em;
+  border: none;
+  background-color: rgb(138, 138, 138);
+}
+
+.no-results button:hover {
+  background-color: rgb(173, 121, 121);
+}

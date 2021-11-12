@@ -15,6 +15,8 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
       if (!allCuisines.includes(cuisine)) {allCuisines.push(cuisine)}
     })
   })
+  allCuisines.sort();
+  allHealthLabels.sort();
   return {
     allRecipes: recipes,
     allCuisines,

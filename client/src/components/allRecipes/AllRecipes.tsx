@@ -8,6 +8,7 @@ import './AllRecipes.css';
 const AllRecipes = () => {
   const { allRecipes, allCuisines} = useAppSelector(state => state);
   const [selectedRecipes, setSelectedRecipes] = useState<IRecipe[]>([]);
+  const [currCuisine, setCurrCuisine] = useState<string>('All');
 
   useEffect(() => {
     setSelectedRecipes(allRecipes);
@@ -18,6 +19,7 @@ const AllRecipes = () => {
     const newArr: IRecipe[] = [];
     if (cuisine === 'all') {
       setSelectedRecipes(allRecipes);
+      setCurrCuisine('All');
     } else {
       allRecipes.map((rec: IRecipe) => {
         if (rec.cuisineType.includes(cuisine)) {
@@ -25,13 +27,14 @@ const AllRecipes = () => {
         }
       })
       setSelectedRecipes(newArr);
+      setCurrCuisine(cuisine.slice(0,1).toUpperCase() + cuisine.slice(1))
     }
   }
 
   return (
     <div className="AllRecipes">
       <SearchBar />
-      <div className="header">All Recipes</div>
+      <div className="header">{currCuisine} Recipes</div>
       <div className="cuisine-buttons">
         <button onClick={() => handleClick('all')} value="all">All</button>
         {

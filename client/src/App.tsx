@@ -10,6 +10,7 @@ import { getFeaturedRecipes } from './APIService';
 import Navbar from './components/navbar/NavBar';
 import Dashboard from './components/dashboard/Dashboard';
 import AllRecipes from './components/allRecipes/AllRecipes';
+import SearchResults from './components/searchResults/SearchResults';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="allRecipes" element={<AllRecipes />} />
+        <Route path="search/:searchTerm" element={<SearchResults />} />
       </Routes>
       <Outlet />
     </div>

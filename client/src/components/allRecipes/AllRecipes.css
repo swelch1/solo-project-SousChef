@@ -1,6 +1,6 @@
 
 .AllRecipes-container {
-  padding: 0 1em;
+  padding: 0 1em 1em;
   display: flex;
   flex-wrap: wrap;
   width: 94%;
@@ -10,19 +10,19 @@
 }
 
 .AllRecipes .header {
-  font-size: 1.5em;
+  font-size: 1.7em;
   text-align: center;
-  font-weight: 400;
-  border-bottom: solid 0.1em black;
+  font-weight: 500;
   margin: auto;
-  width: 15%;
   margin-bottom: 0.5em;
 }
 
 .cuisine-buttons {
   margin: auto;
-  width: 92%;
+  width: 60%;
   margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .cuisine-buttons button {
