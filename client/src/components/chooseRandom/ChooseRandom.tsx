@@ -3,6 +3,7 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { ICriteria } from './criteriaInterface';
 import './ChooseRandom.css';
+import { capitalizeFirstLetter } from '../../helperFunctions';
 
 const ChooseRandom = () => {
   const { allCuisines, healthLabels } = useAppSelector(state => state);
@@ -21,6 +22,7 @@ const ChooseRandom = () => {
   function handleSubmit (e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     console.log(criteria, 'selected criteria');
+
   }
 
   return (
@@ -32,7 +34,7 @@ const ChooseRandom = () => {
         <label>Cuisine</label>
         <select id="cuisine" onChange={(e) => updateCriteria(e, "cuisine")}>
           <option value="blank"> --</option>
-          {allCuisines.map(cuisine => <option key={cuisine} value={cuisine}>{cuisine.slice(0,1).toUpperCase() + cuisine.slice(1)}</option>)}
+          {allCuisines.map(cuisine => <option key={cuisine} value={cuisine}>{capitalizeFirstLetter(cuisine)}</option>)}
         </select>
 
         <label>Number of Ingredients</label>
@@ -41,7 +43,7 @@ const ChooseRandom = () => {
         <label>Dietary Category</label>
         <select id="healthLabel" onChange={(e) => updateCriteria(e, "healthLabel")}>
           <option value="blank"> --</option>
-          {healthLabels.map(label => <option key={label} value={label}>{label.slice(0,1).toUpperCase() + label.slice(1)}</option>)}
+          {healthLabels.map(label => <option key={label} value={label}>{capitalizeFirstLetter(label)}</option>)}
         </select>
 
         <label>Cook Time</label>

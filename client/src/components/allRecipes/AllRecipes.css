@@ -31,3 +31,7 @@
   border: none;
   padding: 0.25em;
 }
+
+.cuisine-buttons button:hover {
+  background-color: rgb(138, 138, 138);
+}

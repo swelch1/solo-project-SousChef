@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { IRecipe } from '../../../../interface/recipeInterface';
 import { useAppSelector } from '../../app/hooks'
+import { capitalizeFirstLetter } from '../../helperFunctions';
 import RecipeSmall from '../recipeSmall/RecipeSmall';
 import SearchBar from '../searchbar/SearchBar';
 import './AllRecipes.css';
@@ -39,7 +40,7 @@ const AllRecipes = () => {
         <button onClick={() => handleClick('all')} value="all">All</button>
         {
           allCuisines.length
-          ? allCuisines.map(c => <button key={c} onClick={() => handleClick(c)} value={c}>{c.slice(0,1).toUpperCase() + c.slice(1)}</button>)
+          ? allCuisines.map(c => <button key={c} onClick={() => handleClick(c)} value={c}>{capitalizeFirstLetter(c)}</button>)
           : <div>Loading cuisines</div>
         }
       </div>

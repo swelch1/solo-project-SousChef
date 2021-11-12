@@ -1,15 +1,22 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { updateCurrRecipe } from '../../app/actions';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import './RecipeSmall.css';
+import { convertTime } from '../../helperFunctions'; 
 
 const RecipeSmall = ({ recipe }: any) => {
-  function convertTime (mins: number): string {
-    const minutes = (mins % 60);
-    const hours = mins/60 > 1 ? Math.floor(mins/60) : undefined;
-    return hours ? `${hours} hr ${minutes} mins` : `${minutes} mins`
+  const dispatch = useAppDispatch();
+  const state = useAppSelector(state => state);
+  const navigate = useNavigate();
+
+  function handleClick (): void {
+    dispatch(updateCurrRecipe({...state, currRecipe: recipe}))
+    navigate(`/recipe/${recipe._id}`)
   }
 
   return (
-    <div className="RecipeSmall">
+    <div className="RecipeSmall" onClick={handleClick}>
       {
         recipe
         ? (

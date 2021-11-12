@@ -22,6 +22,7 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
     allCuisines,
     healthLabels: allHealthLabels,
     searchResults: [],
+    currRecipe: undefined,
   };
 }
 
@@ -33,4 +34,16 @@ export function featurize (allRecipes: IRecipe[]): IRecipe[] {
 
 function getRandomNum(len: number): number {
   return Math.round(Math.random() * len);
+}
+
+export function capitalizeFirstLetter(string: string): string {
+  const wordsArr = string.split(' ');
+  const mappedArr = wordsArr.map(word => word.slice(0,1).toUpperCase() + word.slice(1))
+  return mappedArr.join(' ');
+}
+
+export function convertTime (mins: number): string {
+  const minutes = (mins % 60);
+  const hours = mins/60 > 1 ? Math.floor(mins/60) : undefined;
+  return hours ? `${hours} hr ${minutes} mins` : `${minutes} mins`
 }

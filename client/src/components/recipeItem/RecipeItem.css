@@ -1,0 +1,43 @@
+
+.RecipeItem-container {
+  padding: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 94%;
+  margin: auto;
+  background-color: #E9E9E9;
+  border-radius: 0.6em;
+  min-height: 30em;
+  margin-bottom: 1em;
+}
+
+.RecipeItem-info {
+  margin: 0em auto;
+  width: 100%;
+  padding: 1em;
+  position: relative;
+}
+
+.RecipeItem-info img {
+  position: absolute;
+  top: 4em;
+  right: 1em;
+  height: 15em;
+}
+
+#title {
+  font-size: 1.5em;
+}
+
+.minor-property {
+  margin: 1.5em 0;
+}
+
+.ingredient-item {
+  margin: 0.8em 1em;
+}
+
+#ext-link {
+  margin: 1em;
+}
