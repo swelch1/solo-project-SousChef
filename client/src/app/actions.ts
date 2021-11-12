@@ -6,3 +6,5 @@ export const updateAllRecipes = createAction<IState>('UPDATE-ALL');
 export const updateSearchRecipes = createAction<IState>('UPDATE-SEARCH');
 
 export const updateCurrRecipe = createAction<IState>('UPDATE-CURR-RECIPE');
+
+export const updateRandomRecipe = createAction<IState>('UPDATE-RANDOM-RECIPE');

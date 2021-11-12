@@ -12,6 +12,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import AllRecipes from './components/allRecipes/AllRecipes';
 import SearchResults from './components/searchResults/SearchResults';
 import RecipeItem from './components/recipeItem/RecipeItem';
+import RandomRecipe from './components/randomRecipe/RandomRecipe';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ function App() {
         <Route path="allRecipes" element={<AllRecipes />} />
         <Route path="search/:searchTerm" element={<SearchResults />} />
         <Route path="recipe/:recipeID" element={<RecipeItem />} />
+        <Route path="recipeFinder" element={<RandomRecipe />} />
       </Routes>
       <Outlet />
     </div>

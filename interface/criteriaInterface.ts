@@ -3,4 +3,5 @@ export interface ICriteria {
   healthLabel?: string,
   cookTime?: string,
   numIngredients?: string,
+  findAny: boolean,
 }

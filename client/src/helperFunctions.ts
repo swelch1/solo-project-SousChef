@@ -23,6 +23,7 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
     healthLabels: allHealthLabels,
     searchResults: [],
     currRecipe: undefined,
+    randomRecipe: undefined,
   };
 }
 
@@ -32,7 +33,7 @@ export function featurize (allRecipes: IRecipe[]): IRecipe[] {
   return [allRecipes[getRandomNum(len)], allRecipes[getRandomNum(len)], allRecipes[getRandomNum(len)]];
 }
 
-function getRandomNum(len: number): number {
+export function getRandomNum(len: number): number {
   return Math.round(Math.random() * len);
 }
 

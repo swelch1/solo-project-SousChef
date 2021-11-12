@@ -12,7 +12,7 @@ export async function getAllRecipes (req: Request, res: Response): Promise<void>
     res.send(allRec);
   } catch (e: any) {
     console.log('Error getting all recipes', e);
-    res.status(500);
+    res.sendStatus(500);
   }
 }
 
@@ -25,7 +25,19 @@ export async function searchRecipes (req: Request, res: Response): Promise<void>
     res.send(searchRes);
   } catch (e: any) {
     console.log('Error searching for recipes', e);
-    res.status(500);
+    res.sendStatus(500);
+  }
+}
+
+export async function findMatches (req: Request, res: Response): Promise<void> {
+  try {
+    console.log('New request for random');
+    const criteria = req.body;
+    const result = await Model.findMatches(criteria);
+    res.status(200).send(result);
+  } catch (e) {
+    console.log('Error finding matches', e);
+    res.sendStatus(500);
   }
 }
 

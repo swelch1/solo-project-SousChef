@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { updateAllRecipes, updateCurrRecipe, updateSearchRecipes } from './actions';
+import { updateAllRecipes, updateCurrRecipe, updateRandomRecipe, updateSearchRecipes } from './actions';
 import { IRecipe } from "../../../interface/recipeInterface";
 
 const initialState: IState = {
@@ -8,6 +8,7 @@ const initialState: IState = {
   healthLabels: [],
   searchResults:[],
   currRecipe: undefined,
+  randomRecipe: undefined,
 };
 
 export const allRecipeReducer = createReducer(initialState, (builder) => {
@@ -26,6 +27,10 @@ export const allRecipeReducer = createReducer(initialState, (builder) => {
       if (!action.payload) return;
       state.currRecipe = action.payload.currRecipe;
     })
+    .addCase(updateRandomRecipe, (state, action) => {
+      if (!action.payload) return;
+      state.randomRecipe = action.payload.randomRecipe;
+    })
 })
 
 
@@ -36,4 +41,5 @@ export interface IState {
   healthLabels: string[],
   searchResults: IRecipe[],
   currRecipe: IRecipe | undefined,
+  randomRecipe: IRecipe | undefined,
 }

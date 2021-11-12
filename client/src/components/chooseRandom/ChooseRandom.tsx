@@ -1,28 +1,42 @@
 import React from 'react'
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { useAppSelector } from '../../app/hooks';
-import { ICriteria } from './criteriaInterface';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { ICriteria } from '../../../../interface/criteriaInterface';
 import './ChooseRandom.css';
 import { capitalizeFirstLetter } from '../../helperFunctions';
+import { findRandomMatches } from '../../APIService';
+import { useNavigate } from 'react-router-dom';
+import { getRandomNum } from '../../helperFunctions';
+import { updateRandomRecipe } from '../../app/actions';
 
 const ChooseRandom = () => {
-  const { allCuisines, healthLabels } = useAppSelector(state => state);
-
-  const [ criteria, setCriteria ] = useState<ICriteria>({});
+  const state = useAppSelector(state => state);
+  const { allRecipes, allCuisines, healthLabels } = state;
+  const [ criteria, setCriteria ] = useState<ICriteria>({findAny: true});
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   function updateCriteria (e: (ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>), label: string): void {
     const newVal = e.target.value;
-    console.log(label, typeof parseInt(newVal) === 'number')
     setCriteria({
       ...criteria,
+      findAny: false,
       [label]: newVal
     })
   }
 
-  function handleSubmit (e: FormEvent<HTMLFormElement>): void {
+  async function handleSubmit (e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
-    console.log(criteria, 'selected criteria');
-
+    if (criteria.findAny === true) {
+      const randNum = getRandomNum(allRecipes.length);
+      dispatch(updateRandomRecipe({...state, randomRecipe: allRecipes[randNum]}));
+    } else {
+      const recipeMatches = await findRandomMatches(criteria);
+      const randNum = getRandomNum(recipeMatches.length);
+      dispatch(updateRandomRecipe({...state, randomRecipe: recipeMatches[randNum]}))
+      setCriteria({findAny: true});
+    }
+    navigate('/recipeFinder');
   }
 
   return (
