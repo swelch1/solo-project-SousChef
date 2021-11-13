@@ -8,6 +8,7 @@ import './RecipeMedium.css';
 const RecipeMedium = () => {
   const state = useAppSelector(state => state);
   const recipe = state.randomRecipe;
+  const criteria = state.criteria;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -41,7 +42,13 @@ const RecipeMedium = () => {
               </div>
             </div>
           )
-          : <div>Loading recipe</div>
+          : <div>
+            <div className="no-matches">No results for:</div>
+              {criteria.cuisine ? <li>Cuisine: {capitalizeFirstLetter(criteria.cuisine)}</li> : <div />}
+              {criteria.numIngredients? <li>Num Ingredients: {criteria.numIngredients}</li> : <div />}
+              {criteria.healthLabel ? <li>Category: {criteria.healthLabel}</li> : <div />}
+              {criteria.cookTime ? <li>Cook Time: {convertTime(criteria.cookTime)}</li> : <div />}
+          </div>
         }
     </div>
   )

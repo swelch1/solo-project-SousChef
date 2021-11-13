@@ -67,14 +67,14 @@ interface queryConditions {
     $in: string[]
   },
   totalTime?: {
-    $lte: string
+    $lte: number
   },
   $project?: {
     [key:string]: number | { $size: string },
   },
   $match?: {
     numIngredients: {
-      $lte: string
+      $lte: number
     }
   }
 }

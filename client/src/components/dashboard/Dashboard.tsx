@@ -26,7 +26,7 @@ const Dashboard = () => {
         <div className="Dashboard-body-recipes-container">
           <div id="featured-title">Featured Recipes</div>
           <hr />
-          <button className="shuffle-button" onClick={handleClick}>Shuffle</button>
+          <div id="dash-shuffle-button"><button className="shuffle-button" onClick={handleClick}>Shuffle</button></div>
           <div className="Dashboard-body-recipes">
             {
               featuredRecipes

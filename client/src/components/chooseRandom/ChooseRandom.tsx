@@ -15,13 +15,14 @@ const ChooseRandom = () => {
   const navigate = useNavigate();
 
   function updateCriteriaState (e: (ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>), label: string): void {
-    const newVal = e.target.value;
+    const output = e.target.value;
+    const newVal = (label ==='numIngredients' || label === 'cookTime') ? +output : output;
     dispatch(updateCriteria({
       ...state,
       criteria: {
         ...criteria,
         findAny: false,
-        [label]: newVal
+        [label]: newVal,
       }
     }));
   };
@@ -47,6 +48,8 @@ const ChooseRandom = () => {
         findAny: true,
       }
     }));
+    const randNum = getRandomNum(allRecipes.length);
+    dispatch(updateRandomRecipe({...state, randomRecipe: allRecipes[randNum]}));
   }
 
   return (
