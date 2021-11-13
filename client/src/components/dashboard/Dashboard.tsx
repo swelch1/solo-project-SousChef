@@ -3,6 +3,7 @@ import { useAppSelector } from '../../app/hooks'
 import ChooseRandom from '../chooseRandom/ChooseRandom'
 import RecipeSmall from '../recipeSmall/RecipeSmall'
 import SearchBar from '../searchbar/SearchBar'
+import { useNavigate } from 'react-router-dom'
 
 import { featurize } from '../../helperFunctions'
 import './Dashboard.css';
@@ -11,6 +12,11 @@ import './Dashboard.css';
 const Dashboard = () => {
   const allRecipes = useAppSelector(state => state.allRecipes);
   const featuredRecipes = featurize(allRecipes);
+  const navigate = useNavigate();
+
+  function handleClick (): void {
+    navigate('/dashboard');
+  }
 
   return (
     <div className="Dashboard">
@@ -20,6 +26,7 @@ const Dashboard = () => {
         <div className="Dashboard-body-recipes-container">
           <div id="featured-title">Featured Recipes</div>
           <hr />
+          <button className="shuffle-button" onClick={handleClick}>Shuffle</button>
           <div className="Dashboard-body-recipes">
             {
               featuredRecipes

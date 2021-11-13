@@ -9,10 +9,15 @@
   padding: 1em;
 }
 
+.shuffle-button {
+  margin-top: 3em;
+}
+
 .Dashboard-body-recipes {
+  margin-top: 2em;
   display: flex;
   justify-content: space-evenly; 
-  align-items: top;
+  align-items: center;
 }
 
 #featured-title {
