@@ -1,5 +1,5 @@
 import { IRecipe } from "../../interface/recipeInterface";
-import { IState } from "./app/reducers";
+import { IState } from "../../interface/stateInterface";
 
 export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
   const allCuisines: string[] = [];
@@ -24,6 +24,7 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
     searchResults: [],
     currRecipe: undefined,
     randomRecipe: undefined,
+    criteria: {findAny: true},
   };
 }
 

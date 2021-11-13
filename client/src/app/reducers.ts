@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { updateAllRecipes, updateCurrRecipe, updateRandomRecipe, updateSearchRecipes } from './actions';
-import { IRecipe } from "../../../interface/recipeInterface";
+import { updateAllRecipes, updateCurrRecipe, updateRandomRecipe, updateSearchRecipes, updateCriteria } from './actions';
+import { IState } from "../../../interface/stateInterface";
 
 const initialState: IState = {
   allRecipes: [],
@@ -9,6 +9,7 @@ const initialState: IState = {
   searchResults:[],
   currRecipe: undefined,
   randomRecipe: undefined,
+  criteria: {findAny: true},
 };
 
 export const allRecipeReducer = createReducer(initialState, (builder) => {
@@ -31,15 +32,8 @@ export const allRecipeReducer = createReducer(initialState, (builder) => {
       if (!action.payload) return;
       state.randomRecipe = action.payload.randomRecipe;
     })
+    .addCase(updateCriteria, (state, action) => {
+      if (!action.payload) return;
+      state.criteria = action.payload.criteria;
+    })
 })
-
-
-
-export interface IState {
-  allRecipes: IRecipe[],
-  allCuisines: string[],
-  healthLabels: string[],
-  searchResults: IRecipe[],
-  currRecipe: IRecipe | undefined,
-  randomRecipe: IRecipe | undefined,
-}

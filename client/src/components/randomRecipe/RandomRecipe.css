@@ -1,0 +1,14 @@
+.random-recipe-container {
+  display: flex;
+}
+
+.random-recipe-info {
+  background-color: #E9E9E9;
+  width: 45em;
+  border-radius: 0.6em;
+  padding: 1em;
+}
+
+#random-recipe-title {
+  font-size: 1.5em;
+}

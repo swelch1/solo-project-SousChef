@@ -22,7 +22,6 @@
 }
 
 .ChooseRandom button {
-  margin-top: 8em;
   border-radius: 0.6em;
   background-color: rgb(138, 138, 138);
   border: none;
@@ -31,4 +30,12 @@
 
 .ChooseRandom button:hover {
   background-color: rgb(173, 121, 121);
+}
+
+#button1 {
+  margin-top: 8em;
+}
+
+#button2 {
+  margin-top: 0.6em;
 }

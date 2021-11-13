@@ -14,9 +14,10 @@ export async function getRecipes (searchTerm: string): Promise<IRecipe[]> {
 }
 
 export async function findMatches (criteria: ICriteria): Promise<IRecipe[]> {
-  const matchConditions:any = {};
-  const projectConditions:any = {};
-  const matchCondsForProject:any = {};
+  const matchConditions:queryConditions = {};
+  const projectConditions:queryConditions = {};
+  const matchCondsForProject:queryConditions = {};
+  
   if (criteria.cuisine) {matchConditions.cuisineType = {$in: [criteria.cuisine]}};
   if (criteria.healthLabel) {matchConditions.healthLabels = {$in: [criteria.healthLabel]}};
   if (criteria.cookTime) {matchConditions.totalTime = {$lte: criteria.cookTime}};
@@ -55,4 +56,25 @@ const recipeProps = {
   totalTime: 1,
   cuisineType: 1,
   __v: 1
+}
+
+// setting common interface for all 3 objects used to create query in findMatches
+interface queryConditions {
+  cuisineType?: {
+    $in: string[]
+  },
+  healthLabels?: {
+    $in: string[]
+  },
+  totalTime?: {
+    $lte: string
+  },
+  $project?: {
+    [key:string]: number | { $size: string },
+  },
+  $match?: {
+    numIngredients: {
+      $lte: string
+    }
+  }
 }

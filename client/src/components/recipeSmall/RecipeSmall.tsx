@@ -26,7 +26,7 @@ const RecipeSmall = ({ recipe }: any) => {
               <div id="Recipe-title">{recipe.label}</div>
               <div id="Recipe-info">
                 <div>Cook time: {convertTime(recipe.totalTime)}</div>
-                <div>Serves: {recipe.yield}</div>
+                <div>Serves: {Math.round(recipe.yield)}</div>
               </div>
             </div>
           </div>
