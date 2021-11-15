@@ -20,7 +20,8 @@
 }
 
 .RecipeMedium img {
-  height: 15em;
+  height: 14em;
+  border-radius: 0.6em;
 }
 
 .RecipeMedium .Recipe-info-container {
@@ -30,7 +31,7 @@
 }
 
 .RecipeMedium #Recipe-title {
-  font-size: 1.4em;
+  font-size: 1.3em;
   text-align: center;
   vertical-align:middle;
   margin: 1em 0 0.4em;

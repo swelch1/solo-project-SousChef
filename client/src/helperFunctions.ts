@@ -27,6 +27,18 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): {
   };
 }
 
+export function sortedItems (recipes: IRecipe[]): IRecipe[] {
+  const sortedArr: IRecipe[] = [];
+  const titles = recipes.map(r => r.label).sort();
+  console.log(titles)
+  for (let i = 0; i < titles.length; i++) {
+    recipes.forEach(r => {
+      if (r.label === titles[i]) sortedArr.push(r)
+    })
+  }
+  return sortedArr;
+}
+
 export function featurize (allRecipes: IRecipe[]): IRecipe[] {
   const len = allRecipes.length;
   if (len === 0) {return []}

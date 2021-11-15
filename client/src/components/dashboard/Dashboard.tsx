@@ -9,6 +9,7 @@ import { featurize } from '../../helperFunctions'
 import { fetchMyList } from '../../APIService'
 import { updateMyList } from '../../app/actions'
 import './Dashboard.css';
+import { sortedItems } from '../../helperFunctions'
 import RecipeMicro from '../recipeMicro/RecipeMicro'
 
 
@@ -57,7 +58,7 @@ const Dashboard = () => {
             {
               isAuthenticated 
               ? myList.length 
-                ? myList.map(item => <RecipeMicro recipe={item} />)
+                ? sortedItems(myList).map(item => <RecipeMicro recipe={item} />)
                 : <div>Add recipes to your list to see them here!</div>
               : (<div className="Dashboard-login">
                 <div id="Dashboard-login-label">Login/Register to View Your List

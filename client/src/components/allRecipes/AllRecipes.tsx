@@ -26,6 +26,7 @@ const AllRecipes = () => {
         if (rec.cuisineType.includes(cuisine)) {
           newArr.push(rec);
         }
+        return true;
       })
       setSelectedRecipes(newArr);
       setCurrCuisine(cuisine.slice(0,1).toUpperCase() + cuisine.slice(1))
@@ -35,7 +36,7 @@ const AllRecipes = () => {
   return (
     <div className="AllRecipes">
       <SearchBar />
-      <div className="header">{currCuisine} Recipes</div>
+      <div className="AllRecipes-header">{capitalizeFirstLetter(currCuisine)} Recipes</div>
       <div className="cuisine-buttons">
         <button onClick={() => handleClick('all')} value="all">All</button>
         {

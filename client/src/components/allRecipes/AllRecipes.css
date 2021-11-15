@@ -7,9 +7,11 @@
   margin: auto;
   background-color: #E9E9E9;
   border-radius: 0.6em;
+  height: 34em;
+  overflow-y: scroll;
 }
 
-.AllRecipes .header {
+.AllRecipes-header {
   font-size: 1.7em;
   text-align: center;
   font-weight: 500;
