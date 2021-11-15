@@ -76,6 +76,5 @@ export async function updateMyListAPI (recipeId: string, accessToken: string): P
     },
     body: JSON.stringify({ recipeId }),
   })
-  // .then(res => res.json())
   .catch(error => console.log('Error adding recipe to user\'s list', error));
 }

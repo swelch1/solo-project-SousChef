@@ -9,6 +9,7 @@ import { featurize } from '../../helperFunctions'
 import { fetchMyList } from '../../APIService'
 import { updateMyList } from '../../app/actions'
 import './Dashboard.css';
+import RecipeMicro from '../recipeMicro/RecipeMicro'
 
 
 const Dashboard = () => {
@@ -52,19 +53,21 @@ const Dashboard = () => {
         <div className="Dashboard-login-container">
           <div className="Dashboard-header">My List</div>
           <hr />
-          {
-            isAuthenticated 
-            ? myList.length 
-              ? myList.map(item => <div>{item.label}</div>)
-              : <div>Add recipes to your list to see them here!</div>
-            : (<div className="Dashboard-login">
-              <div id="Dashboard-login-label">Login/Register to View Your List
-                <Link to="/login">
-                  <button>Login/Register</button>
-                </Link>
-              </div>
-            </div>)
-          }
+          <div className="Dashboard-login-container-scroll">
+            {
+              isAuthenticated 
+              ? myList.length 
+                ? myList.map(item => <RecipeMicro recipe={item} />)
+                : <div>Add recipes to your list to see them here!</div>
+              : (<div className="Dashboard-login">
+                <div id="Dashboard-login-label">Login/Register to View Your List
+                  <Link to="/login">
+                    <button>Login/Register</button>
+                  </Link>
+                </div>
+              </div>)
+            }
+          </div>
         </div>
       </div>
     </div>

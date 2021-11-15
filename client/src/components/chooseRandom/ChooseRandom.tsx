@@ -29,14 +29,9 @@ const ChooseRandom = () => {
 
   async function handleSubmit (e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
-    if (criteria.findAny === true) {
-      const randNum = getRandomNum(allRecipes.length);
-      dispatch(updateRandomRecipe({...state, randomRecipe: allRecipes[randNum]}));
-    } else {
-      const recipeMatches = await findRandomMatches(criteria);
-      const randNum = getRandomNum(recipeMatches.length);
-      dispatch(updateRandomRecipe({...state, randomRecipe: recipeMatches[randNum]}))
-    }
+    const recipeMatches = criteria.findAny === true ? allRecipes : await findRandomMatches(criteria);
+    const randNum = getRandomNum(recipeMatches.length);
+    dispatch(updateRandomRecipe({...state, randomRecipe: recipeMatches[randNum]}));
     navigate('/recipeFinder');
   }
 

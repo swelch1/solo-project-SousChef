@@ -9,7 +9,7 @@ import { updateMyList } from '../../app/actions';
 const RecipeItem = () => {
   const dispatch = useAppDispatch();
   const state = useAppSelector(state => state);
-  const { currRecipe, myList } = state;
+  const { currRecipe, myList, isAuthenticated } = state;
 
   function handleClick(): void {
     const accessToken = localStorage.getItem('accessToken');
@@ -34,7 +34,16 @@ const RecipeItem = () => {
         {
           currRecipe
           ? <div className="RecipeItem-info"> 
-            <div id="title">{currRecipe.label}</div>
+            <div className="RecipeItem-header">
+              <div id="title">{currRecipe.label}</div>
+              {
+                !isAuthenticated
+                ? <button className="user-list-button" id="no-auth-button">+ My List</button>
+                : myList.map(item => item._id).includes(currRecipe._id)
+                  ? <button className="change-list-button-down user-list-button" onClick={handleClick}><span className="sign">X</span> My List</button>
+                  : <button className="change-list-button-up user-list-button" onClick={handleClick}><span className="sign">+</span> My List</button>
+              }
+            </div>  
             <hr />
             <div className="minor-property">Cook Time: {convertTime(currRecipe.totalTime)}</div>
             <div className="minor-property">Serves: {currRecipe.yield}</div>
@@ -44,11 +53,6 @@ const RecipeItem = () => {
             </div>
             <div className="minor-property">Full Recipe Instructions: <br></br><a id="ext-link" href={currRecipe.url}>{currRecipe.url}</a></div>
             <img src={currRecipe.image} alt={currRecipe.label}></img>
-            {
-              myList.map(item => item._id).includes(currRecipe._id)
-              ? <button onClick={handleClick}>- My List</button>
-              : <button onClick={handleClick}>+ My List</button>
-            }
           </div>
           : <div>Loading Recipe</div>
         }

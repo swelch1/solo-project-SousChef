@@ -1,0 +1,17 @@
+.RecipeMicro {
+  background-color: white;
+  border-radius: 0.6em;
+  margin: 0.75em 0;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+.RecipeMicro img {
+  height: 2em;
+  margin-right: 0.5em;
+}
+
+.RecipeMicro div {
+  font-size: 0.75em;
+}

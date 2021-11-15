@@ -18,6 +18,11 @@
   position: relative;
 }
 
+.RecipeItem-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .RecipeItem-info img {
   position: absolute;
   top: 4em;
@@ -39,4 +44,33 @@
 
 #ext-link {
   margin: 1em;
+}
+
+#no-auth-button {
+  opacity: 15%;
+}
+
+.user-list-button {
+  border-radius: 0.6em;
+  border: none;
+  background-color: rgb(138, 138, 138);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.change-list-button-up:hover {
+  background-color: rgb(0, 102, 255);
+  color: lightgray;
+}
+
+.change-list-button-down:hover {
+  background-color: rgb(151, 0, 0);
+  color: lightgray;
+}
+
+.sign {
+  font-size: 1em;
+  margin-right: 0.3em;
+  font-weight: 600;
 }

@@ -43,6 +43,12 @@
   width: 14em;
 }
 
+.Dashboard-login-container-scroll {
+  height: 27em;
+  width: 14em;
+  overflow-y: scroll;
+}
+
 .Dashboard-login {
   display: flex;
   flex-direction: column;
