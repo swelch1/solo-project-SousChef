@@ -18,7 +18,7 @@ export async function registerUser (req: Request, res: Response): Promise<void> 
     }
     const isUser = await Model.registerUser(username, password);
     if (isUser) {
-      const id = isUser._id;
+      const id = String(isUser._id);
       const accessToken = jwt.sign({ id }, SECRET_KEY);
       res.status(200).send({ isAuth: true, message: 'New user registered', accessToken });
       return;
@@ -42,7 +42,7 @@ export async function loginUser (req: Request, res: Response): Promise<void> {
     }
     const isUser = await Model.loginUser(username, password);
     if (isUser) {
-      const id = isUser._id;
+      const id = String(isUser._id);
       const accessToken = jwt.sign({ id }, SECRET_KEY);
       res.status(200).send({ isAuth: true, message: 'Logging user in', accessToken });
       return;
@@ -89,6 +89,22 @@ export async function findMatches (req: Request, res: Response): Promise<void> {
     res.status(200).send(result);
   } catch (e) {
     console.log('Error finding matches', e);
+    res.sendStatus(500);
+  }
+}
+
+export async function getUserList (req: Request, res: Response): Promise<void> {
+  try {
+    if (!req.headers.authorization) {
+      res.status(200).send([]);
+      return;
+    }
+    const accessToken = req.headers.authorization.split(' ')[1];
+    const { id } = jwt.verify(accessToken, SECRET_KEY);
+    const userList = await Model.getUserList(id);
+    res.status(200).send(userList);
+  } catch (e) {
+    console.log('Error finding user\'s list', e);
     res.sendStatus(500);
   }
 }

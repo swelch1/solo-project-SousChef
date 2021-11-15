@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { updateAllRecipes, updateCurrRecipe, updateRandomRecipe, updateSearchRecipes, updateCriteria, updateUserAuth } from './actions';
+import { updateAllRecipes, updateCurrRecipe, updateRandomRecipe, updateSearchRecipes, updateCriteria, updateUserAuth, updateMyList } from './actions';
 import { IState } from "../../../interface/stateInterface";
 
 const initialState: IState = {
@@ -11,6 +11,7 @@ const initialState: IState = {
   randomRecipe: undefined,
   criteria: {findAny: true},
   isAuthenticated: false,
+  myList: [],
 };
 
 export const allRecipeReducer = createReducer(initialState, (builder) => {
@@ -39,5 +40,8 @@ export const allRecipeReducer = createReducer(initialState, (builder) => {
     })
     .addCase(updateUserAuth, (state, action) => {
       state.isAuthenticated = !state.isAuthenticated;
+    })
+    .addCase(updateMyList, (state, action) => {
+      state.myList = action.payload.myList;
     })
 })

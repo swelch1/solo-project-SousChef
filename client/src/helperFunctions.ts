@@ -1,7 +1,10 @@
 import { IRecipe } from "../../interface/recipeInterface";
-import { IState } from "../../interface/stateInterface";
 
-export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
+export function setStateInterfaceFromRecipes (recipes: IRecipe[]): {
+  allRecipes: IRecipe[],
+  allCuisines: string[],
+  healthLabels: string[]
+} {
   const allCuisines: string[] = [];
   const allHealthLabels: string[] = [];
   recipes.forEach(recipe => {
@@ -20,12 +23,7 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
   return {
     allRecipes: recipes,
     allCuisines,
-    healthLabels: allHealthLabels,
-    searchResults: [],
-    currRecipe: undefined,
-    randomRecipe: undefined,
-    criteria: {findAny: true},
-    isAuthenticated: false,
+    healthLabels: allHealthLabels
   };
 }
 

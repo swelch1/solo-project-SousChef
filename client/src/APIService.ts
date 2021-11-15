@@ -41,7 +41,8 @@ export async function registerUser (username: string, password: string): Promise
     headers: {'Content-type': 'application/json'},
     body: JSON.stringify({username, password}),
   })
-  .then(res => res.json());
+  .then(res => res.json())  
+  .catch(error => console.log('Error registering user', error));
 }
 
 export async function logUserIn (username: string, password: string): Promise<IAuthRes> {
@@ -50,5 +51,18 @@ export async function logUserIn (username: string, password: string): Promise<IA
     headers: {'Content-type': 'application/json'},
     body: JSON.stringify({username, password}),
   })
-  .then(res => res.json());
+  .then(res => res.json())
+  .catch(error => console.log('Error logging user in', error));
+}
+
+export async function fetchMyList (accessToken: string): Promise<IRecipe[]> {
+  return fetch(`${BASE_URL}/myList`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
+  .then(res => res.json())
+  .catch(error => console.log('Error finding user\'s list', error));
 }

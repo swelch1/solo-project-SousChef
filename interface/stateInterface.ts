@@ -10,4 +10,5 @@ export interface IState {
   randomRecipe: IRecipe | undefined,
   criteria: ICriteria,
   isAuthenticated: boolean,
+  myList: IRecipe[],
 }

@@ -8,7 +8,6 @@ import './UserAuth.css';
 const UserAuth = ({ refPage }: any) => {
   const [ username, setUsername ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
-  // const [ isUser, setIsUser ] = useState<boolean>(true);
   const [ resMessage, setResMessage ] = useState<string>('')
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -26,11 +25,10 @@ const UserAuth = ({ refPage }: any) => {
       : await registerUser(username, password);
     if (message) {
       setResMessage(message);
-      // setIsUser(res.isAuth);
     }
     if (accessToken) {
       localStorage.setItem('accessToken', accessToken);
-      dispatch(updateUserAuth);
+      dispatch(updateUserAuth());
       navigate('/dashboard');
     }
   }

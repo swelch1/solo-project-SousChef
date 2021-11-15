@@ -5,6 +5,7 @@ import { IRecipe } from "../../interface/recipeInterface";
 import { IUser } from "../../interface/userInterface";
 const {recipeModel, userModel } = require('./index');
 const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 
 export async function registerUser (username: string, password: string): Promise<IUser | boolean> {
   const isUser = await userModel.findOne({username});
@@ -31,6 +32,15 @@ export async function getRecipes (searchTerm: string): Promise<IRecipe[]> {
     return await recipeModel.find({label: regex});
   } else {
     return await recipeModel.find({}, null, { sort: { label: 1 }});
+  }
+}
+
+export async function getUserList(id: string): Promise<IRecipe[]> {
+  const { savedRecipes } = await userModel.findById(id);
+  if (savedRecipes.length) {
+    return await recipeModel.find({ _id: { $in: savedRecipes }})
+  } else {
+    return [];
   }
 }
 

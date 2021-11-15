@@ -12,5 +12,8 @@ router
 
   // search & choose one
   .get('/search/:searchTerm', ctrl.searchRecipes)
-  .post('/find-random', ctrl.findMatches);
+  .post('/find-random', ctrl.findMatches)
+
+  //user recipe list
+  .get('/myList', ctrl.getUserList);
 

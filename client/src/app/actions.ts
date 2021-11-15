@@ -12,3 +12,5 @@ export const updateRandomRecipe = createAction<IState>('UPDATE-RANDOM-RECIPE');
 export const updateCriteria = createAction<IState>('UPDATE-CRITERIA');
 
 export const updateUserAuth = createAction('UPDATE-AUTH');
+
+export const updateMyList = createAction<IState>('UPDATE-MY-LIST');
