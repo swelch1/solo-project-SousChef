@@ -66,3 +66,16 @@ export async function fetchMyList (accessToken: string): Promise<IRecipe[]> {
   .then(res => res.json())
   .catch(error => console.log('Error finding user\'s list', error));
 }
+
+export async function updateMyListAPI (recipeId: string, accessToken: string): Promise<void> {
+  fetch(`${BASE_URL}/myList`, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({ recipeId }),
+  })
+  // .then(res => res.json())
+  .catch(error => console.log('Error adding recipe to user\'s list', error));
+}

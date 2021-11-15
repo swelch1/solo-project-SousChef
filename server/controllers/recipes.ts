@@ -109,5 +109,23 @@ export async function getUserList (req: Request, res: Response): Promise<void> {
   }
 }
 
+export async function updateUserList (req: Request, res: Response): Promise<void> {
+  try {
+    console.log('New update user list request')
+    if (!req.headers.authorization) {
+      res.status(200).send([]);
+      return;
+    }
+    const newItem = req.body.recipeId;
+    const accessToken = req.headers.authorization.split(' ')[1];
+    const { id } = jwt.verify(accessToken, SECRET_KEY);
+    const added = await Model.updateUserList(newItem, id);
+    added ? res.sendStatus(201) : res.sendStatus(202);
+  } catch (e) {
+    console.log('Error updating user\'s list', e);
+    res.sendStatus(500);
+  }
+}
+
 
 

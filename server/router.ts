@@ -15,5 +15,6 @@ router
   .post('/find-random', ctrl.findMatches)
 
   //user recipe list
-  .get('/myList', ctrl.getUserList);
+  .get('/myList', ctrl.getUserList)
+  .post('/myList', ctrl.updateUserList);
 

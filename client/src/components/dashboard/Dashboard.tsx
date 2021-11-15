@@ -21,8 +21,8 @@ const Dashboard = () => {
     async function getUserList(): Promise<void> {
       const accessToken = localStorage.getItem('accessToken');
       if (accessToken) {
-        const myList = await fetchMyList(accessToken);
-        if (myList.length) dispatch(updateMyList({...state, myList}));
+        const fetchedList = await fetchMyList(accessToken);
+        if (fetchedList.length) dispatch(updateMyList({...state, myList: fetchedList}));
       }
     }
     getUserList();

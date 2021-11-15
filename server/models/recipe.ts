@@ -44,6 +44,20 @@ export async function getUserList(id: string): Promise<IRecipe[]> {
   }
 }
 
+export async function updateUserList(recipeId: string, id: string): Promise<boolean> {
+  const { savedRecipes } = await userModel.findById(id);
+  const itemIndex = savedRecipes.indexOf(recipeId);
+  if (itemIndex === -1) {
+    await userModel.findByIdAndUpdate(id, { savedRecipes: [...savedRecipes, recipeId] });
+    return true;
+  } else {
+    const updatedList = savedRecipes.slice();
+    updatedList.splice(itemIndex, 1);
+    await userModel.findByIdAndUpdate(id, { savedRecipes: updatedList });
+    return false;
+  }
+}
+
 export async function findMatches (criteria: ICriteria): Promise<IRecipe[]> {
   const matchConditions:queryConditions = {};
   const projectConditions:queryConditions = {};
