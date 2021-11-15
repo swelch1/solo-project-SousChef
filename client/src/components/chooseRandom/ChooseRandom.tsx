@@ -29,7 +29,6 @@ const ChooseRandom = () => {
 
   async function handleSubmit (e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
-    console.log(criteria)
     if (criteria.findAny === true) {
       const randNum = getRandomNum(allRecipes.length);
       dispatch(updateRandomRecipe({...state, randomRecipe: allRecipes[randNum]}));
@@ -54,7 +53,7 @@ const ChooseRandom = () => {
 
   return (
     <div className="ChooseRandom">
-      <div id="ChooseRandom-header">Help me choose</div>
+      <div id="ChooseRandom-header">Help Me Choose</div>
       <hr />
       <form className="ChooseRandom-form" onSubmit={handleSubmit} onReset={handleReset}>
 

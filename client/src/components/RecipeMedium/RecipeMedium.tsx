@@ -37,7 +37,7 @@ const RecipeMedium = () => {
                   </div>
                   <div>Cook time: {convertTime(recipe.totalTime)}</div>
                   <div>Serves: {Math.round(recipe.yield)}</div>
-                  <div>(click to see health labels/full details)</div>
+                  <div>(click to see full details)</div>
                 </div>
               </div>
             </div>

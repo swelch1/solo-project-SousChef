@@ -25,6 +25,7 @@ export function setStateInterfaceFromRecipes (recipes: IRecipe[]): IState {
     currRecipe: undefined,
     randomRecipe: undefined,
     criteria: {findAny: true},
+    isAuthenticated: false,
   };
 }
 

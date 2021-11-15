@@ -7,8 +7,8 @@ router
   .get('/', ctrl.getAllRecipes)
   
   // nav bar
-  .post('/login')
-  .post('/register')
+  .post('/login', ctrl.loginUser)
+  .post('/register', ctrl.registerUser)
 
   // search & choose one
   .get('/search/:searchTerm', ctrl.searchRecipes)

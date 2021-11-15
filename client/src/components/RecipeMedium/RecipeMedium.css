@@ -2,10 +2,9 @@
   background-color: white;
   padding: 1em;
   margin: auto;
-  margin-top: 1em;
   border-radius: 0.6em;
-  width: 20em;
-  height: 25em;
+  width: 18em;
+  height: 23em;
   display: flex;
 }
 
@@ -13,7 +12,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin:auto;
+  margin: auto;
 }
 
 .RecipeMedium .Recipe-container:nth-child(1){

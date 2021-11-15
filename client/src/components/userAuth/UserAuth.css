@@ -1,0 +1,14 @@
+.User-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.User-input label {
+  margin-top: 0.7em;
+  margin-bottom: 0.2em;
+}
+
+.User-input button {
+  margin-top: 1em;
+}

@@ -16,7 +16,7 @@
 }
 
 .shuffle-button {
-  margin-top: 2em;
+  margin-top: 1.25em;
   padding: 1em 3em;
   border: none;
   background-color: rgb(138, 138, 138);
@@ -24,12 +24,43 @@
 }
 
 .Dashboard-body-recipes {
-  margin-top: 2em;
+  margin-top: 1.25em;
   display: flex;
   justify-content: space-evenly; 
   align-items: center;
 }
 
-#featured-title {
+.Dashboard-header {
   font-size: 1.5em;
+}
+
+.Dashboard-login-container {
+  background-color: #E9E9E9;
+  height: 30em;
+  margin: 0 1em;
+  border-radius: 0.6em;
+  padding: 1em;
+  width: 14em;
+}
+
+.Dashboard-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#Dashboard-login-label {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  margin-top: 3em;
+}
+
+.Dashboard-login button {
+  border-radius: 0.6em;
+  background-color: rgb(138, 138, 138);
+  border: none;
+  padding: 0.3em 0;
+  width: 74%;
+  margin: 2em auto;
 }

@@ -1,5 +1,6 @@
 import { IRecipe } from '../../interface/recipeInterface';
 import { ICriteria } from '../../interface/criteriaInterface';
+import { IAuthRes } from '../../interface/authResponse';
 
 const BASE_URL = 'http://localhost:3001';
 
@@ -32,4 +33,22 @@ export function findRandomMatches (criteria: ICriteria ): Promise<IRecipe[]> {
   .then(res => res.json())
   .then(data => data)
   .catch(error => console.log('Error finding criteria matches', error));
+}
+
+export async function registerUser (username: string, password: string): Promise<IAuthRes> {
+  return fetch(`${BASE_URL}/register`, {
+    method: 'POST',
+    headers: {'Content-type': 'application/json'},
+    body: JSON.stringify({username, password}),
+  })
+  .then(res => res.json());
+}
+
+export async function logUserIn (username: string, password: string): Promise<IAuthRes> {
+  return fetch(`${BASE_URL}/login`, {
+    method: 'POST',
+    headers: {'Content-type': 'application/json'},
+    body: JSON.stringify({username, password}),
+  })
+  .then(res => res.json());
 }

@@ -10,3 +10,5 @@ export const updateCurrRecipe = createAction<IState>('UPDATE-CURR-RECIPE');
 export const updateRandomRecipe = createAction<IState>('UPDATE-RANDOM-RECIPE');
 
 export const updateCriteria = createAction<IState>('UPDATE-CRITERIA');
+
+export const updateUserAuth = createAction('UPDATE-AUTH');

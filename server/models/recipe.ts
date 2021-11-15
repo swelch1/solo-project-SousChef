@@ -1,15 +1,36 @@
 'use strict';
-import { ICriteria } from '../../interface/criteriaInterface';
 
-const Model = require('./index');
+import { ICriteria } from '../../interface/criteriaInterface';
 import { IRecipe } from "../../interface/recipeInterface";
+import { IUser } from "../../interface/userInterface";
+const {recipeModel, userModel } = require('./index');
+const bcrypt = require('bcrypt');
+
+export async function registerUser (username: string, password: string): Promise<IUser | boolean> {
+  const isUser = await userModel.findOne({username});
+  if (isUser) {return false;}
+  else {
+    return userModel.create({
+      username,
+      password: bcrypt.hashSync(password, 10),
+      savedRecipes: [],
+    })
+  }
+}
+
+export async function loginUser (username: string, password: string): Promise<IUser | boolean> {
+  const isUser = await userModel.findOne({username});
+  if (!isUser) return false;
+  const isPass = bcrypt.compareSync(password, isUser.password);
+  return isPass ? isUser : false;
+}
 
 export async function getRecipes (searchTerm: string): Promise<IRecipe[]> {
   if (searchTerm) {
     const regex = new RegExp(searchTerm, 'gi')
-    return await Model.find({label: regex});
+    return await recipeModel.find({label: regex});
   } else {
-    return await Model.find({}, null, { sort: { label: 1 }});
+    return await recipeModel.find({}, null, { sort: { label: 1 }});
   }
 }
 
@@ -32,7 +53,7 @@ export async function findMatches (criteria: ICriteria): Promise<IRecipe[]> {
       : [{$match: {...matchConditions}}]
     : [{...projectConditions}, {...matchCondsForProject}];
 
-  const vals = await Model.aggregate(query);
+  const vals = await recipeModel.aggregate(query);
   return vals;
 }
 

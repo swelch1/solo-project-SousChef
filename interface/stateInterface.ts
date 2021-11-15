@@ -9,4 +9,5 @@ export interface IState {
   currRecipe: IRecipe | undefined,
   randomRecipe: IRecipe | undefined,
   criteria: ICriteria,
+  isAuthenticated: boolean,
 }
