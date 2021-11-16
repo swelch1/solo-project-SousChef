@@ -2,8 +2,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { updateCurrRecipe } from '../../app/actions';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import './RecipeSmall.css';
 import { convertTime } from '../../helperFunctions'; 
+// styling
+import './RecipeSmall.css';
 
 const RecipeSmall = ({ recipe }: any) => {
   const dispatch = useAppDispatch();

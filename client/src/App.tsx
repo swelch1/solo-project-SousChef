@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
+import { Routes, Route, Outlet, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { updateAllRecipes, updateUserAuth } from './app/actions';
-import './App.css';
 import { setStateInterfaceFromRecipes } from './helperFunctions';
-import { Routes, Route, Outlet, useNavigate } from 'react-router-dom';
-
 import { getFeaturedRecipes } from './APIService';
+// components
 import Navbar from './components/navbar/NavBar';
 import Dashboard from './components/dashboard/Dashboard';
 import AllRecipes from './components/allRecipes/AllRecipes';
@@ -15,6 +14,8 @@ import RandomRecipe from './components/randomRecipe/RandomRecipe';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import MyList from './components/myList/MyList';
+// styling
+import './App.css';
 
 function App() {
   const navigate = useNavigate();

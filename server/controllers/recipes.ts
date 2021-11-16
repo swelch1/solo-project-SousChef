@@ -3,7 +3,6 @@
 const Model = require('../models/recipe');
 import { IRecipe } from '../../interface/recipeInterface';
 import { Request, Response } from 'express';
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'lefthanded-potato124%'
 
@@ -13,7 +12,7 @@ export async function registerUser (req: Request, res: Response): Promise<void> 
     console.log('New registration request');
     const { username, password } = req.body;
     if (!username || !password) { 
-      res.status(404).send({ isAuth: false, message: 'Enter both username and password' });
+      res.status(400).send({ isAuth: false, message: 'Enter both username and password' });
       return; 
     }
     const isUser = await Model.registerUser(username, password);
@@ -37,7 +36,7 @@ export async function loginUser (req: Request, res: Response): Promise<void> {
     console.log('New user login request');
     const { username, password } = req.body;
     if (!username || !password) {
-      res.status(404).send({ isAuth: false, message: 'Enter both username and password' });
+      res.status(400).send({ isAuth: false, message: 'Enter both username and password' });
       return;
     }
     const isUser = await Model.loginUser(username, password);
@@ -47,7 +46,7 @@ export async function loginUser (req: Request, res: Response): Promise<void> {
       res.status(200).send({ isAuth: true, message: 'Logging user in', accessToken });
       return;
     } else {
-      res.status(409).send({ isAuth: false, message: 'User already exists' });
+      res.status(401).send({ isAuth: false, message: 'User already exists' });
       return;
     }
   } catch (e) {
@@ -96,7 +95,7 @@ export async function findMatches (req: Request, res: Response): Promise<void> {
 export async function getUserList (req: Request, res: Response): Promise<void> {
   try {
     if (!req.headers.authorization) {
-      res.status(200).send([]);
+      res.status(401).send([]);
       return;
     }
     const accessToken = req.headers.authorization.split(' ')[1];
@@ -113,7 +112,7 @@ export async function updateUserList (req: Request, res: Response): Promise<void
   try {
     console.log('New update user list request')
     if (!req.headers.authorization) {
-      res.status(200).send([]);
+      res.status(401).send([]);
       return;
     }
     const newItem = req.body.recipeId;

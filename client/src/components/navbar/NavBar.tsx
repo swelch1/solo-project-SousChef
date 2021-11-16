@@ -1,10 +1,10 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
-import logo from '../../image/souschef-logo.png';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updateMyList, updateUserAuth } from '../../app/actions';
-
+import logo from '../../image/souschef-logo.png';
+// styling
+import './Navbar.css';
 
 const Navbar = () => {
   const state = useAppSelector(state => state);

@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState, ChangeEvent, FormEvent } from 'react';
-import './SearchBar.css';
+import { useNavigate } from 'react-router-dom';
 import { searchRecipes } from '../../APIService';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updateSearchRecipes } from '../../app/actions';
-import { useNavigate } from 'react-router-dom';
+// styling
+import './SearchBar.css';
 
 const SearchBar = () => {
   const [ searchTerm, setSearchTerm ] = useState<string>('');

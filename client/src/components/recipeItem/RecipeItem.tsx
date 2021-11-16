@@ -1,10 +1,12 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import SearchBar from '../searchbar/SearchBar';
-import './RecipeItem.css';
 import { convertTime } from '../../helperFunctions';
 import { updateMyListAPI } from '../../APIService';
 import { updateMyList } from '../../app/actions';
+// component
+import SearchBar from '../searchbar/SearchBar';
+// styling
+import './RecipeItem.css';
 
 const RecipeItem = () => {
   const dispatch = useAppDispatch();

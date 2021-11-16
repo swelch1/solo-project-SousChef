@@ -5,7 +5,6 @@ import { IRecipe } from "../../interface/recipeInterface";
 import { IUser } from "../../interface/userInterface";
 const {recipeModel, userModel } = require('./index');
 const bcrypt = require('bcrypt');
-const mongoose = require('mongoose');
 
 export async function registerUser (username: string, password: string): Promise<IUser | boolean> {
   const isUser = await userModel.findOne({username});

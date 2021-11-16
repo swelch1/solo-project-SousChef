@@ -12,3 +12,11 @@
 .User-input button {
   margin-top: 1em;
 }
+
+.error-message {
+  inline-size: 9em;
+  text-align: center;
+  border: solid 2px red;
+  padding: 0.5em;
+  background-color: rgb(248, 99, 99);
+}

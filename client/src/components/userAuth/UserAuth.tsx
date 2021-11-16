@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { updateUserAuth } from '../../app/actions';
 import { useAppDispatch } from '../../app/hooks';
 import { logUserIn, registerUser } from '../../APIService';
+// styling
 import './UserAuth.css';
 
 const UserAuth = ({ refPage }: any) => {
@@ -36,7 +37,7 @@ const UserAuth = ({ refPage }: any) => {
   return (
     <div>
       <form className="User-input" onSubmit={handleSubmit}>
-        <div>{resMessage}</div>
+        {resMessage.length ? <div className="error-message">{resMessage}</div> : <div />}
         <label>Username</label>
         <input type="text" value={username} onChange={(e) => handleChange(e, 'username')}></input>
         <label>Password</label>

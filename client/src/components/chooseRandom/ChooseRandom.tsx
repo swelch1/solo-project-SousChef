@@ -1,12 +1,12 @@
 import React from 'react'
 import { ChangeEvent, FormEvent } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import './ChooseRandom.css';
-import { capitalizeFirstLetter } from '../../helperFunctions';
-import { findRandomMatches } from '../../APIService';
 import { useNavigate } from 'react-router-dom';
-import { getRandomNum } from '../../helperFunctions';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updateRandomRecipe, updateCriteria } from '../../app/actions';
+import { capitalizeFirstLetter, getRandomNum } from '../../helperFunctions';
+import { findRandomMatches } from '../../APIService';
+// styling
+import './ChooseRandom.css';
 
 const ChooseRandom = () => {
   const state = useAppSelector(state => state);

@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { updateMyList } from '../../app/actions'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { featurize } from '../../helperFunctions'
+import { fetchMyList } from '../../APIService'
+import { sortedItems } from '../../helperFunctions'
+// components
 import ChooseRandom from '../chooseRandom/ChooseRandom'
 import RecipeSmall from '../recipeSmall/RecipeSmall'
 import SearchBar from '../searchbar/SearchBar'
-import { Link } from 'react-router-dom'
-
-import { featurize } from '../../helperFunctions'
-import { fetchMyList } from '../../APIService'
-import { updateMyList } from '../../app/actions'
-import './Dashboard.css';
-import { sortedItems } from '../../helperFunctions'
 import RecipeMicro from '../recipeMicro/RecipeMicro'
-
+// styling
+import './Dashboard.css';
 
 const Dashboard = () => {
   const state = useAppSelector(state => state);

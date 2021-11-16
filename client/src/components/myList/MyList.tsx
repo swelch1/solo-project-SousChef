@@ -1,8 +1,10 @@
 import React from 'react'
 import { useAppSelector } from '../../app/hooks';
+import { sortedItems } from '../../helperFunctions';
+// components
 import RecipeSmall from '../recipeSmall/RecipeSmall';
 import SearchBar from '../searchbar/SearchBar';
-import { sortedItems } from '../../helperFunctions';
+// styling
 import './MyList.css';
 
 const MyList = () => {

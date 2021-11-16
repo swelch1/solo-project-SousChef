@@ -16,11 +16,12 @@
   align-items: center;
   width: 40%;
   margin: auto;
-  height: 18em;
+  height: 20em;
 }
 
 #Login-header {
   text-align: center;
   font-size: 1.3em;
-  margin-bottom: 1em;
+  margin-top: 1em;
+  
 }

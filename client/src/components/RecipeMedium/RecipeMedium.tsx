@@ -1,8 +1,9 @@
 import React from 'react'
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { capitalizeFirstLetter, convertTime } from '../../helperFunctions';
 import { updateCurrRecipe } from '../../app/actions';
+// styling
 import './RecipeMedium.css';
 
 const RecipeMedium = () => {

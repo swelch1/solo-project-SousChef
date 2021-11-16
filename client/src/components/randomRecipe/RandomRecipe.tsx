@@ -1,13 +1,15 @@
 import React from 'react'
-import ChooseRandom from '../chooseRandom/ChooseRandom'
-import SearchBar from '../searchbar/SearchBar'
-import RecipeMedium from '../RecipeMedium/RecipeMedium'
-import './RandomRecipe.css';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updateRandomRecipe } from '../../app/actions';
 import { getRandomNum } from '../../helperFunctions';
 import { findRandomMatches } from '../../APIService';
+// components
+import ChooseRandom from '../chooseRandom/ChooseRandom'
+import SearchBar from '../searchbar/SearchBar'
+import RecipeMedium from '../RecipeMedium/RecipeMedium'
+// styling
+import './RandomRecipe.css';
 
 const RandomRecipe = () => {
   const state = useAppSelector(state => state);

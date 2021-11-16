@@ -1,11 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { searchRecipes } from '../../APIService';
+import { updateSearchRecipes } from '../../app/actions';
+// components
 import SearchBar from '../searchbar/SearchBar';
 import RecipeSmall from '../recipeSmall/RecipeSmall';
+// styling
 import './SearchResults.css'
-import { searchRecipes } from '../../APIService';
-import { useNavigate } from 'react-router-dom';
-import { updateSearchRecipes } from '../../app/actions';
 
 const SearchResults = () => {
   const state = useAppSelector(state => state);

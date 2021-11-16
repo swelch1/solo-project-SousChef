@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import './RecipeMicro.css';
 import { updateCurrRecipe } from '../../app/actions';
+// styling
+import './RecipeMicro.css';
 
 const RecipeMicro = ({ recipe }: any) => {
   const state = useAppSelector(state => state);

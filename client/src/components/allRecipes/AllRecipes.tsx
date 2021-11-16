@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { IRecipe } from '../../../../interface/recipeInterface';
-import { useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../app/hooks';
 import { capitalizeFirstLetter } from '../../helperFunctions';
+// components
 import RecipeSmall from '../recipeSmall/RecipeSmall';
 import SearchBar from '../searchbar/SearchBar';
+// styling
 import './AllRecipes.css';
 
 const AllRecipes = () => {

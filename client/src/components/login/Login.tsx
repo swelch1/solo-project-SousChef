@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Login.css';
+// component
 import UserAuth from '../userAuth/UserAuth';
+// styling
+import './Login.css';
 
 const Login = () => {
 
