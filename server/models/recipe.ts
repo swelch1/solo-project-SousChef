@@ -3,7 +3,7 @@
 import { ICriteria } from '../../interface/criteriaInterface';
 import { IRecipe } from "../../interface/recipeInterface";
 import { IUser } from "../../interface/userInterface";
-const {recipeModel, userModel } = require('./index');
+const { recipeModel, userModel } = require('./index');
 const bcrypt = require('bcrypt');
 
 export async function registerUser (username: string, password: string): Promise<IUser | boolean> {
@@ -14,8 +14,8 @@ export async function registerUser (username: string, password: string): Promise
       username,
       password: bcrypt.hashSync(password, 10),
       savedRecipes: [],
-    })
-  }
+    });
+  };
 }
 
 export async function loginUser (username: string, password: string): Promise<IUser | boolean> {
@@ -27,7 +27,7 @@ export async function loginUser (username: string, password: string): Promise<IU
 
 export async function getRecipes (searchTerm: string): Promise<IRecipe[]> {
   if (searchTerm) {
-    const regex = new RegExp(searchTerm, 'gi')
+    const regex = new RegExp(searchTerm, 'gi');
     return await recipeModel.find({label: regex});
   } else {
     return await recipeModel.find({}, null, { sort: { label: 1 }});
@@ -37,7 +37,7 @@ export async function getRecipes (searchTerm: string): Promise<IRecipe[]> {
 export async function getUserList(id: string): Promise<IRecipe[]> {
   const { savedRecipes } = await userModel.findById(id);
   if (savedRecipes.length) {
-    return await recipeModel.find({ _id: { $in: savedRecipes }})
+    return await recipeModel.find({ _id: { $in: savedRecipes }});
   } else {
     return [];
   }

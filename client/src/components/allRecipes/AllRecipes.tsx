@@ -50,7 +50,7 @@ const AllRecipes = () => {
       <div className="AllRecipes-container"> 
         {
           selectedRecipes.length
-          ? selectedRecipes.map(rec => <RecipeSmall key={rec._id} recipe={rec}/>)
+          ? selectedRecipes.map(rec => <RecipeSmall key={String(rec._id)} recipe={rec}/>)
           : <div>Loading Recipes</div>
         }
       </div>

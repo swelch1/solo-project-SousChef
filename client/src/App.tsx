@@ -36,6 +36,7 @@ function App() {
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken && state.isAuthenticated === false) {dispatch(updateUserAuth())}
     navigate('/dashboard');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

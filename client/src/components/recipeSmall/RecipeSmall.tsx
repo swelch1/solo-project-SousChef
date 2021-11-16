@@ -3,10 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { updateCurrRecipe } from '../../app/actions';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { convertTime } from '../../helperFunctions'; 
+import { IRecipe } from '../../../../interface/recipeInterface';
 // styling
 import './RecipeSmall.css';
 
-const RecipeSmall = ({ recipe }: any) => {
+interface Prop {
+  recipe: IRecipe
+}
+
+const RecipeSmall = ({ recipe }: Prop) => {
   const dispatch = useAppDispatch();
   const state = useAppSelector(state => state);
   const navigate = useNavigate();

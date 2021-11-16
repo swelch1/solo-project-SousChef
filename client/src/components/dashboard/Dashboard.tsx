@@ -28,6 +28,7 @@ const Dashboard = () => {
       }
     }
     getUserList();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated])
 
   return (
@@ -46,7 +47,7 @@ const Dashboard = () => {
           <div className="Dashboard-body-recipes">
             {
               featuredRecipes
-              ? featuredRecipes.map(rec => <RecipeSmall key={rec._id} recipe={rec}/>)
+              ? featuredRecipes.map(rec => <RecipeSmall key={String(rec._id)} recipe={rec}/>)
               : <div>No featured recipes today</div> 
             }
           </div>

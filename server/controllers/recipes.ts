@@ -1,10 +1,10 @@
 'use strict';
 
 const Model = require('../models/recipe');
-import { IRecipe } from '../../interface/recipeInterface';
-import { Request, Response } from 'express';
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'lefthanded-potato124%'
+import { IRecipe } from '../../interface/recipeInterface';
+import { Request, Response } from 'express';
 
 
 export async function registerUser (req: Request, res: Response): Promise<void> {
@@ -110,7 +110,7 @@ export async function getUserList (req: Request, res: Response): Promise<void> {
 
 export async function updateUserList (req: Request, res: Response): Promise<void> {
   try {
-    console.log('New update user list request')
+    console.log('New update user list request');
     if (!req.headers.authorization) {
       res.status(401).send([]);
       return;

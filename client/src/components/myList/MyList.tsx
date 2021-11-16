@@ -17,7 +17,7 @@ const MyList = () => {
       <div className="MyList-container"> 
       {
         myItems
-        ? sortedItems(myItems).map(item => <RecipeSmall key={item._id} recipe={item} />)
+        ? sortedItems(myItems).map(item => <RecipeSmall key={String(item._id)} recipe={item} />)
         : <div>Save a recipe to see it here!</div>
       }
       </div>

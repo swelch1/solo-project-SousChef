@@ -2,10 +2,15 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updateCurrRecipe } from '../../app/actions';
+import { IRecipe } from '../../../../interface/recipeInterface';
 // styling
 import './RecipeMicro.css';
 
-const RecipeMicro = ({ recipe }: any) => {
+interface Prop {
+  recipe: IRecipe
+}
+
+const RecipeMicro = ({ recipe }: Prop) => {
   const state = useAppSelector(state => state);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

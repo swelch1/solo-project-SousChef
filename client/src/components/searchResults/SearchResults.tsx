@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { searchRecipes } from '../../APIService';
@@ -28,7 +28,7 @@ const SearchResults = () => {
       <div className="SearchResults-container"> 
         {
           searchResults.length
-          ? searchResults.map(rec => <RecipeSmall key={rec._id} recipe={rec}/>)
+          ? searchResults.map(rec => <RecipeSmall key={String(rec._id)} recipe={rec}/>)
           : <div className="no-results">
               <div className="header">No matches! Search again or click below:</div>
               <div className="no-results-buttons">
