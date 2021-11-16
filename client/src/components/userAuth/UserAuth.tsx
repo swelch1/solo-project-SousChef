@@ -41,7 +41,7 @@ const UserAuth = ({ refPage }: any) => {
         <label>Username</label>
         <input type="text" value={username} onChange={(e) => handleChange(e, 'username')}></input>
         <label>Password</label>
-        <input type="text" value={password} onChange={(e) => handleChange(e, 'password')}></input>
+        <input type="password" value={password} onChange={(e) => handleChange(e, 'password')}></input>
         <button type="submit">Submit</button>
       </form>
     </div>

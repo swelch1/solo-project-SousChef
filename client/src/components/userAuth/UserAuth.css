@@ -9,8 +9,18 @@
   margin-bottom: 0.2em;
 }
 
+.User-input input {
+  padding: 0.25em;
+  border-radius: 0.4em;
+  border: solid 1px lightgray;
+}
+
 .User-input button {
   margin-top: 1em;
+  border: none;
+  background-color: rgb(138, 138, 138);
+  border-radius: 0.6em;
+  padding: 0.25em;
 }
 
 .error-message {

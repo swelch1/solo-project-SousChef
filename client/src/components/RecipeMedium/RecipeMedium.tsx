@@ -42,12 +42,12 @@ const RecipeMedium = () => {
               </div>
             </div>
           )
-          : <div>
-            <div className="no-matches">No results for:</div>
-              {criteria.cuisine ? <li>Cuisine: {capitalizeFirstLetter(criteria.cuisine)}</li> : <div />}
-              {criteria.numIngredients? <li>Num Ingredients: {criteria.numIngredients}</li> : <div />}
-              {criteria.healthLabel ? <li>Category: {criteria.healthLabel}</li> : <div />}
-              {criteria.cookTime ? <li>Cook Time: {convertTime(criteria.cookTime)}</li> : <div />}
+          : <div className="no-matches">
+            <div className="no-matches-header">No results for:</div>
+              {criteria.cuisine ? <li><span>Cuisine: </span>{capitalizeFirstLetter(criteria.cuisine)}</li> : <div />}
+              {criteria.numIngredients? <li><span>Num Ingredients: </span>{criteria.numIngredients}</li> : <div />}
+              {criteria.healthLabel ? <li><span>Category: </span>{criteria.healthLabel}</li> : <div />}
+              {criteria.cookTime ? <li><span>Cook Time: </span>{convertTime(criteria.cookTime)}</li> : <div />}
           </div>
         }
     </div>

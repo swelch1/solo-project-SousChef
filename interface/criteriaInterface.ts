@@ -1,7 +1,7 @@
 export interface ICriteria {
   cuisine?: string,
   healthLabel?: string,
-  cookTime?: number,
-  numIngredients?: number,
+  cookTime?: number | undefined,
+  numIngredients?: number | undefined,
   findAny: boolean,
 }

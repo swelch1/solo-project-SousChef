@@ -61,20 +61,30 @@ export async function findMatches (criteria: ICriteria): Promise<IRecipe[]> {
   const matchConditions:queryConditions = {};
   const projectConditions:queryConditions = {};
   const matchCondsForProject:queryConditions = {};
-  
-  if (criteria.cuisine) {matchConditions.cuisineType = {$in: [criteria.cuisine]}};
-  if (criteria.healthLabel) {matchConditions.healthLabels = {$in: [criteria.healthLabel]}};
-  if (criteria.cookTime) {matchConditions.totalTime = {$lte: criteria.cookTime}};
+
+  if (criteria.cuisine) {
+    if (criteria.cuisine !== 'all') { matchConditions.cuisineType = {$in: [criteria.cuisine]} };
+  };
+  if (criteria.healthLabel) {
+    if (criteria.healthLabel !== 'none') { matchConditions.healthLabels = {$in: [criteria.healthLabel]} };
+  };
+  if (criteria.cookTime) { 
+    if (criteria.cookTime > 0) { matchConditions.totalTime = {$lte: criteria.cookTime} }; 
+  };
   if (criteria.numIngredients) {
-    projectConditions.$project = {...recipeProps, numIngredients: {$size: '$ingredients'}};
-    matchCondsForProject.$match = {numIngredients: {$lte: criteria.numIngredients}};
-  }
+    if (criteria.numIngredients > 0) {
+      projectConditions.$project = {...recipeProps, numIngredients: {$size: '$ingredients'}};
+      matchCondsForProject.$match = {numIngredients: {$lte: criteria.numIngredients}};
+    };
+  };
   // write query based on which criteria were passed
   const query = Object.keys(matchConditions).length > 0 
     ? Object.keys(projectConditions).length > 0
       ? [{$match: {...matchConditions}}, {...projectConditions}, {...matchCondsForProject}]
       : [{$match: {...matchConditions}}]
-    : [{...projectConditions}, {...matchCondsForProject}];
+    : Object.keys(projectConditions).length > 0
+      ? [{...projectConditions}, {...matchCondsForProject}]
+      : [{$match: {}}];
 
   const vals = await recipeModel.aggregate(query);
   return vals;

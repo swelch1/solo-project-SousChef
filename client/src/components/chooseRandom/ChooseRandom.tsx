@@ -15,6 +15,7 @@ const ChooseRandom = () => {
   const navigate = useNavigate();
 
   function updateCriteriaState (e: (ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>), label: string): void {
+    e.preventDefault();
     const output = e.target.value;
     const newVal = (label ==='numIngredients' || label === 'cookTime') ? +output : output;
     dispatch(updateCriteria({
@@ -30,7 +31,7 @@ const ChooseRandom = () => {
   async function handleSubmit (e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
     const recipeMatches = criteria.findAny === true ? allRecipes : await findRandomMatches(criteria);
-    const randNum = getRandomNum(recipeMatches.length);
+    const randNum = getRandomNum(recipeMatches.length - 1);
     dispatch(updateRandomRecipe({...state, randomRecipe: recipeMatches[randNum]}));
     navigate('/recipeFinder');
   }
@@ -53,22 +54,22 @@ const ChooseRandom = () => {
       <form className="ChooseRandom-form" onSubmit={handleSubmit} onReset={handleReset}>
 
         <label>Cuisine</label>
-        <select id="cuisine" onChange={(e) => updateCriteriaState(e, "cuisine")}>
-          <option value="blank"> --</option>
+        <select id="cuisine" onChange={(e) => updateCriteriaState(e, "cuisine")} value={criteria.cuisine ? criteria.cuisine : 'all'}>
+          <option value="all">All</option>
           {allCuisines.map(cuisine => <option key={cuisine} value={cuisine}>{capitalizeFirstLetter(cuisine)}</option>)}
         </select>
 
-        <label>Number of Ingredients</label>
-        <input id="numIngredients" type="number" onChange={(e) => updateCriteriaState(e, "numIngredients")} placeholder="10..."></input>
+        <label>Number of Ingredients (min. 2)</label>
+        <input id="numIngredients" type="number" onChange={(e) => updateCriteriaState(e, "numIngredients")} placeholder="10..." min="2" value={criteria.numIngredients ? criteria.numIngredients : undefined}></input>
 
         <label>Dietary Category</label>
-        <select id="healthLabel" onChange={(e) => updateCriteriaState(e, "healthLabel")}>
-          <option value="blank"> --</option>
+        <select id="healthLabel" onChange={(e) => updateCriteriaState(e, "healthLabel")} value={criteria.healthLabel ? criteria.healthLabel : 'none'}>
+          <option value="none"> --</option>
           {healthLabels.map(label => <option key={label} value={label}>{capitalizeFirstLetter(label)}</option>)}
         </select>
 
         <label>Cook Time</label>
-        <input id="cookTime" type="number" onChange={(e) => updateCriteriaState(e, "cookTime")} placeholder="50 mins..."></input>
+        <input id="cookTime" type="number" onChange={(e) => updateCriteriaState(e, "cookTime")} placeholder="50 mins..." value={criteria.cookTime ? criteria.cookTime : undefined}></input>
 
         <button id="button1" type="submit">Find Me Something Good</button>
         <button id="button2" type="reset">Reset Search</button>

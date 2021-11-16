@@ -57,6 +57,6 @@ export function capitalizeFirstLetter(string: string): string {
 
 export function convertTime (mins: number): string {
   const minutes = (mins % 60);
-  const hours = mins/60 > 1 ? Math.floor(mins/60) : undefined;
+  const hours = mins/60 >= 1 ? Math.floor(mins/60) : undefined;
   return hours ? `${hours} hr ${minutes} mins` : `${minutes} mins`
 }

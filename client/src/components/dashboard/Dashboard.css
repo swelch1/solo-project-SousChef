@@ -70,3 +70,7 @@
   width: 74%;
   margin: 2em auto;
 }
+
+.Dashboard button:hover {
+  background-color: rgb(173, 121, 121);
+}

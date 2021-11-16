@@ -13,17 +13,17 @@ import './RandomRecipe.css';
 
 const RandomRecipe = () => {
   const state = useAppSelector(state => state);
-  const { criteria, allRecipes } = state;
+  const { criteria, allRecipes, randomRecipe } = state;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   async function handleClick (): Promise<void> {
     if (criteria.findAny === true) {
-      const randNum = getRandomNum(allRecipes.length);
+      const randNum = getRandomNum(allRecipes.length - 1);
       dispatch(updateRandomRecipe({...state, randomRecipe: allRecipes[randNum]}));
     } else {
       const recipeMatches = await findRandomMatches(criteria);
-      const randNum = getRandomNum(recipeMatches.length);
+      const randNum = getRandomNum(recipeMatches.length - 1);
       dispatch(updateRandomRecipe({...state, randomRecipe: recipeMatches[randNum]}))
     }
     navigate('/recipeFinder');
@@ -37,7 +37,7 @@ const RandomRecipe = () => {
         <div className="random-recipe-info">
           <div id="random-recipe-title">Hand Selected Just for You, Randomly</div>
           <hr />
-          <div className="shuffle-btn-container"><button className="shuffle-btn" onClick={handleClick}>No Chance, Go Again</button></div>
+          { randomRecipe ? <div className="shuffle-btn-container"><button className="shuffle-btn" onClick={handleClick}>Randomize, Again</button></div> :  <div /> }
           <RecipeMedium />
         </div>
       </div>

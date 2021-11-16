@@ -46,7 +46,7 @@ export async function loginUser (req: Request, res: Response): Promise<void> {
       res.status(200).send({ isAuth: true, message: 'Logging user in', accessToken });
       return;
     } else {
-      res.status(401).send({ isAuth: false, message: 'User already exists' });
+      res.status(401).send({ isAuth: false, message: 'Incorrect user credentials' });
       return;
     }
   } catch (e) {

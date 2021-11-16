@@ -12,7 +12,7 @@ const Login = () => {
       <div className="Login-container">
         <div id="Login-header">Login</div>
         <UserAuth refPage={"login"}/>
-        <Link to="/register">No Account? Register Here</Link>
+        <Link to="/register" style={{fontSize: '0.85em'}}>No Account? Register Here</Link>
       </div>
     </div>
   )

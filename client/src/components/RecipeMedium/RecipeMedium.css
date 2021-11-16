@@ -42,6 +42,16 @@
   text-align: center;
 }
 
+.no-matches-header {
+  margin-bottom: 1em;
+  font-size: 1.2em;
+}
+
 .no-matches li {
   list-style-type: none;
+}
+
+.no-matches span {
+  font-weight: 500;
+  color: rgb(126, 126, 126);
 }
