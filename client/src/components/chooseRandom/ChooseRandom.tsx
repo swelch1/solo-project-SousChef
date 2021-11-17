@@ -41,6 +41,10 @@ const ChooseRandom = () => {
       ...state,
       criteria: {
         findAny: true,
+        cuisine: 'all',
+        numIngredients: undefined,
+        healthLabel: 'none',
+        cookTime: undefined,
       }
     }));
     const randNum = getRandomNum(allRecipes.length);
@@ -60,7 +64,7 @@ const ChooseRandom = () => {
         </select>
 
         <label>Number of Ingredients (min. 2)</label>
-        <input id="numIngredients" type="number" onChange={(e) => updateCriteriaState(e, "numIngredients")} placeholder="10..." min="2" value={criteria.numIngredients ? criteria.numIngredients : undefined}></input>
+        <input id="numIngredients" type="number" onChange={(e) => updateCriteriaState(e, "numIngredients")} placeholder="10..." min="2" value={criteria.numIngredients ? criteria.numIngredients : ''}></input>
 
         <label>Dietary Category</label>
         <select id="healthLabel" onChange={(e) => updateCriteriaState(e, "healthLabel")} value={criteria.healthLabel ? criteria.healthLabel : 'none'}>
@@ -69,7 +73,7 @@ const ChooseRandom = () => {
         </select>
 
         <label>Cook Time</label>
-        <input id="cookTime" type="number" onChange={(e) => updateCriteriaState(e, "cookTime")} placeholder="50 mins..." value={criteria.cookTime ? criteria.cookTime : undefined}></input>
+        <input id="cookTime" type="number" onChange={(e) => updateCriteriaState(e, "cookTime")} placeholder="50 mins..." value={criteria.cookTime ? criteria.cookTime : ''}></input>
 
         <button id="button1" type="submit">Find Me Something Good</button>
         <button id="button2" type="reset">Reset Search</button>

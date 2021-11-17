@@ -1,10 +1,9 @@
 .ChooseRandom {
   background-color: #E9E9E9;
   height: 30em;
-  margin: 0 1em;
   border-radius: 0.6em;
   padding: 1em;
-  width: 14em;
+  width: 100%;
 }
 
 #ChooseRandom-header {
@@ -14,11 +13,18 @@
 .ChooseRandom-form {
   display: flex;
   flex-direction: column;
+  height: 90%;
 }
 
 .ChooseRandom-form label {
   margin-top: 1em;
   margin-bottom: 0.3em;
+  font-size: 0.9em;
+}
+
+.ChooseRandom-form input, .ChooseRandom-form select {
+  max-width: 18em;
+  padding: 1px;
 }
 
 .ChooseRandom button {
@@ -26,6 +32,8 @@
   background-color: rgb(138, 138, 138);
   border: none;
   padding: 0.3em;
+  font-size: 0.8em;
+  max-width: 18em;
 }
 
 .ChooseRandom button:hover {

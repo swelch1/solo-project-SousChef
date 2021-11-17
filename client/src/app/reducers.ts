@@ -1,9 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { updateAllRecipes, updateCurrRecipe, updateRandomRecipe, updateSearchRecipes, updateCriteria, updateUserAuth, updateMyList } from './actions';
+import { updateAllRecipes, updateCurrRecipe, updateRandomRecipe, updateSearchRecipes, updateCriteria, updateUserAuth, updateMyList, updateFeaturedRecipes } from './actions';
 import { IState } from "../../../interface/stateInterface";
 
 const initialState: IState = {
   allRecipes: [],
+  featuredRecipes: [],
   allCuisines: [],
   healthLabels: [],
   searchResults:[],
@@ -21,6 +22,9 @@ export const allRecipeReducer = createReducer(initialState, (builder) => {
       state.allRecipes = action.payload.allRecipes;
       state.allCuisines = action.payload.allCuisines;
       state.healthLabels = action.payload.healthLabels;
+    })
+    .addCase(updateFeaturedRecipes, (state, action) => {
+      state.featuredRecipes = action.payload.featuredRecipes;
     })
     .addCase(updateSearchRecipes, (state, action) => {
       if (!action.payload) return;

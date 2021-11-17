@@ -2,11 +2,18 @@
   display: flex;
 }
 
+.chooser-container {
+  margin: 0 1em;
+  border-radius: 0.6em;
+  width: 20%;
+}
+
 .Dashboard-body-recipes-container {
   background-color: #E9E9E9;
-  width: 45em;
+  width: 60%;
   border-radius: 0.6em;
   padding: 1em;
+  margin-left: 2em;
 }
 
 #dash-shuffle-button {
@@ -36,16 +43,15 @@
 
 .Dashboard-login-container {
   background-color: #E9E9E9;
-  height: 30em;
   margin: 0 1em;
   border-radius: 0.6em;
   padding: 1em;
-  width: 14em;
+  width: 20%;
 }
 
 .Dashboard-login-container-scroll {
   height: 27em;
-  width: 14em;
+  width: 100%;
   overflow-y: scroll;
 }
 

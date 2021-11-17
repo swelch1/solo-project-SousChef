@@ -4,7 +4,7 @@ import { IAuthRes } from '../../interface/authResponse';
 
 const BASE_URL = 'http://localhost:3001';
 
-export function getFeaturedRecipes (): Promise<IRecipe[]> {
+export function getAllRecipes (): Promise<IRecipe[]> {
   return fetch(BASE_URL, {
     method: 'GET',
     headers: {'Content-type': 'application/json'}

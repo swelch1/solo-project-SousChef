@@ -3,6 +3,8 @@ import { IState } from '../../../interface/stateInterface';
 
 export const updateAllRecipes = createAction<IState>('UPDATE-ALL');
 
+export const updateFeaturedRecipes = createAction<IState>('UPDATE-FEATURED');
+
 export const updateSearchRecipes = createAction<IState>('UPDATE-SEARCH');
 
 export const updateCurrRecipe = createAction<IState>('UPDATE-CURR-RECIPE');

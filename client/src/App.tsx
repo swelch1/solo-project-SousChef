@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, Outlet, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './app/hooks';
-import { updateAllRecipes, updateUserAuth } from './app/actions';
-import { setStateInterfaceFromRecipes } from './helperFunctions';
-import { getFeaturedRecipes } from './APIService';
+import { updateAllRecipes, updateFeaturedRecipes, updateUserAuth } from './app/actions';
+import { featurize, setStateInterfaceFromRecipes } from './helperFunctions';
+import { getAllRecipes } from './APIService';
 // components
 import Navbar from './components/navbar/NavBar';
 import Dashboard from './components/dashboard/Dashboard';
@@ -23,15 +23,16 @@ function App() {
   const state = useAppSelector(state => state);
   
   useEffect(()=> {
-    async function getFeatured(): Promise<void> {
-      const featured = await getFeaturedRecipes();
-      const newState = setStateInterfaceFromRecipes(featured)
+    async function getRecipes(): Promise<void> {
+      const all = await getAllRecipes();
+      const newState = setStateInterfaceFromRecipes(all)
       dispatch(updateAllRecipes({
         ...state,
         ...newState
       }));
+      dispatch(updateFeaturedRecipes({ ...state, featuredRecipes: featurize(all) }))
     }
-    getFeatured();
+    getRecipes();
     // check user creds in case of page refresh
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken && state.isAuthenticated === false) {dispatch(updateUserAuth())}

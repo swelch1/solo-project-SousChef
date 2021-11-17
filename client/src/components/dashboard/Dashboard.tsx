@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { updateMyList } from '../../app/actions'
+import { updateFeaturedRecipes, updateMyList } from '../../app/actions'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { featurize } from '../../helperFunctions'
 import { fetchMyList } from '../../APIService'
-import { sortedItems } from '../../helperFunctions'
+import { featurize, sortedItems } from '../../helperFunctions'
 // components
 import ChooseRandom from '../chooseRandom/ChooseRandom'
 import RecipeSmall from '../recipeSmall/RecipeSmall'
@@ -15,9 +14,8 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const state = useAppSelector(state => state);
-  const { allRecipes, isAuthenticated, myList } = state;
+  const { allRecipes, featuredRecipes, isAuthenticated, myList } = state;
   const dispatch = useAppDispatch();
-  const featuredRecipes = featurize(allRecipes);
 
   useEffect(() => {
     async function getUserList(): Promise<void> {
@@ -31,18 +29,20 @@ const Dashboard = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated])
 
+  function handleShuffle (): void {
+    dispatch(updateFeaturedRecipes({ ...state, featuredRecipes: featurize(allRecipes)}))
+  }
+
   return (
     <div className="Dashboard">
       <SearchBar />
       <div className="Dashboard-body">
-        <ChooseRandom />
+        <div className="chooser-container"><ChooseRandom /></div>
         <div className="Dashboard-body-recipes-container">
           <div className="Dashboard-header">Explore Recipes</div>
           <hr />
           <div id="dash-shuffle-button">
-            <Link to="/dashboard">
-              <button className="shuffle-button">Shuffle</button>
-            </Link>  
+            <button onClick={handleShuffle} className="shuffle-button">Shuffle</button> 
           </div>
           <div className="Dashboard-body-recipes">
             {

@@ -33,7 +33,7 @@ const RandomRecipe = () => {
     <div className="RandomRecipe">
       <SearchBar />
       <div className="random-recipe-container">
-        <ChooseRandom />
+        <div className="Choose-container"><ChooseRandom /></div>
         <div className="random-recipe-info">
           <div id="random-recipe-title">Hand Selected Just for You, Randomly</div>
           <hr />

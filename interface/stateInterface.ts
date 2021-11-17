@@ -3,6 +3,7 @@ import { IRecipe } from "./recipeInterface";
 
 export interface IState {
   allRecipes: IRecipe[],
+  featuredRecipes: IRecipe[],
   allCuisines: string[],
   healthLabels: string[],
   searchResults: IRecipe[],
