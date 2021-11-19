@@ -6,7 +6,7 @@ import { router } from './router';
 
 const app = new express();
 
-const PORT = 3001;
+const PORT = 3002;
 
 app
   .use(cors())
