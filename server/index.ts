@@ -5,7 +5,6 @@ const cors = require('cors');
 import { router } from './router';
 
 const app = new express();
-
 const PORT = 3002;
 
 app

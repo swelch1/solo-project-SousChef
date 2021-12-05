@@ -2,7 +2,7 @@ import { IRecipe } from '../../interface/recipeInterface';
 import { ICriteria } from '../../interface/criteriaInterface';
 import { IAuthRes } from '../../interface/authResponse';
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'http://localhost:3002';
 
 export function getAllRecipes (): Promise<IRecipe[]> {
   return fetch(BASE_URL, {
