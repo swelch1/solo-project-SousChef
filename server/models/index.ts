@@ -5,11 +5,9 @@ const mongoose = require('mongoose');
 import { recipeSchema } from './recipeSchema';
 import { userSchema } from './userSchema';
 
-const URL = 'mongodb://localhost:27017/';
-const dbName = 'solo-proj-recipes-clean';
+const dbName = 'recipes';
 
-mongoose.connect(`${URL}${dbName}`, dbStatus);
-// mongoose.connect(process.env.DATABASE, dbStatus);
+mongoose.connect(process.env.DATABASE, dbStatus);
 
 const recipeModel = new mongoose.model('recipe', recipeSchema);
 const userModel = new mongoose.model('user', userSchema);

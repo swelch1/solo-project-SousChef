@@ -1,11 +1,12 @@
 'use strict';
+require('dotenv').config()
 
 const express = require('express');
 const cors = require('cors');
 import { router } from './router';
 
 const app = new express();
-const PORT = 3002;
+const PORT = process.env.PORT;
 
 app
   .use(cors())
